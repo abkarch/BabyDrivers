@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         ss = GetComponent<SplitScreen>();
+        startMatch();
     }
 
     public void startMatch() {
