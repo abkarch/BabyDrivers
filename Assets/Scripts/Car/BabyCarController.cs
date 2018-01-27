@@ -122,7 +122,7 @@ public class BabyCarController : MonoBehaviour
         {
             return maxTorque * gasPedal.PedalValue;
         }
-        return maxTorque* Input.GetAxis("Vertical");
+        return maxTorque* Input.GetAxis("VerticalP1");
     }
 
     public float GetTurningAngle()
@@ -132,6 +132,6 @@ public class BabyCarController : MonoBehaviour
         {
             return steeringWheel.GetSteeringWheelAngle();
         }
-        return maxAngle * Input.GetAxis("Horizontal");
+        return maxAngle * Input.GetAxis("HorizontalP1");
     }
 }
