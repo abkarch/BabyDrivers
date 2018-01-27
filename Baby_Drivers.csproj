@@ -283,11 +283,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CarScript.cs" />
+    <Compile Include="Assets\changeScene.cs" />
     <Compile Include="Assets\characterControllers\player1\Scripts\UserControlP1.cs" />
     <Compile Include="Assets\characterControllers\player2\Scripts\UserControlP2.cs" />
     <Compile Include="Assets\characterControllers\player3\Scripts\UserControlP3.cs" />
     <Compile Include="Assets\characterControllers\player4\Scripts\UserControlP4.cs" />
     <Compile Include="Assets\characterControllers\scripts\ThirdPersonCharacter.cs" />
+    <Compile Include="Assets\GoalScript.cs" />
+    <Compile Include="Assets\Player Name Assignment.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
@@ -333,6 +336,7 @@
     <Compile Include="Assets\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
+    <Compile Include="Assets\quit.cs" />
     <Compile Include="Assets\Scripts\BeautyShot.cs" />
     <Compile Include="Assets\Scripts\BeautyShotExtraFine.cs" />
     <Compile Include="Assets\Scripts\Car\BabyCarController.cs" />
