@@ -12,7 +12,8 @@ public class BabyCarController : MonoBehaviour
     public CarPedal gasPedal;
     [Tooltip("Should point to the pedal for the brakes.")]
     public CarPedal brakePedal;
-    
+    [Tooltip("Should point to a gear shift for gear states like park, reverse, and drive.")]
+    public GearShift gearShift;    
 
     [Tooltip("Maximum steering angle of the wheels")]
     public float maxAngle = 30f;
@@ -71,8 +72,23 @@ public class BabyCarController : MonoBehaviour
 
         float angle = GetTurningAngle();
         float torque = GetTorqueValue();
-
         float handBrake = GetBrakingValue();
+
+        if (gearShift != null)
+        {
+            switch(gearShift.CurrentGear)
+            {
+                case GearShift.Gear.Drive:
+                    //TODO: make sure braking can't go in reverse
+                    break;
+                case GearShift.Gear.Park:
+                    torque = 0; //no acceleration in park
+                    break;
+                case GearShift.Gear.Reverse:
+                    torque *= -1; //reverse the acceleration
+                    break;
+            }
+        }
 
         foreach (WheelCollider wheel in m_Wheels)
         {
