@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4957838213820140}
   - component: {fileID: 146640057542422904}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: a0r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4233421265809706}
   - component: {fileID: 146747283213588368}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: a1r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4843541022900638}
   - component: {fileID: 146895368782948698}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: a1l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4386812554458590}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SteeringWheelParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4072234764282486}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CamSidePosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4781204981859512}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CamLookAtTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4526620380921186}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CamPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 54790966066715980}
   - component: {fileID: 114203345994181844}
   - component: {fileID: 114082633019738704}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FamilyCarTEST
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 65301712172133076}
   - component: {fileID: 23309958045471078}
   - component: {fileID: 114785240239904312}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SteeringWheelTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4814310019836418}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CamRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4365935941245814}
   - component: {fileID: 146180644114158736}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: a0l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 33218698289552628}
   - component: {fileID: 23082975139914178}
   - component: {fileID: 64034485570209504}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FamilyCarChassis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,7 +511,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff5b6923c7c35b4d94b3cd652da7e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carRigidbody: {fileID: 0}
   steeringWheel: {fileID: 114785240239904312}
+  gasPedal: {fileID: 0}
+  brakePedal: {fileID: 0}
+  gearShift: {fileID: 0}
   maxAngle: 30
   maxTorque: 300
   brakeTorque: 30000
@@ -546,6 +550,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f617b9e9ea7e8141be98390df851df3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxAngle: 180
+  resetRotationRate: 0
 --- !u!146 &146180644114158736
 WheelCollider:
   m_ObjectHideFlags: 1
