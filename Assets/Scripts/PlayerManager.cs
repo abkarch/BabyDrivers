@@ -24,6 +24,7 @@ public class PlayerManager : MonoBehaviour {
     public void startMatch() {
         for (int i = 0; i < numberOfPlayers; i++) {
             GameObject g = GameObject.Instantiate(playerPrefabs[i]);
+            g.transform.position = gameObject.transform.position;
             g.transform.parent = gameObject.transform;
             ss.setCam(i + 1, g.GetComponentInChildren<Camera>());
         }
