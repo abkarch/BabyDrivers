@@ -3,6 +3,9 @@ using System;
 
 public class BabyCarController : MonoBehaviour
 {
+    public static BabyCarController instance;
+    public Rigidbody carRigidbody;
+
     [Tooltip("Should point to a steering wheel for this car. Will be used for turning.")]
     public SteeringWheel steeringWheel;
     [Tooltip("Should point to the pedal for the gas.")]
@@ -31,6 +34,15 @@ public class BabyCarController : MonoBehaviour
     public DriveType driveType;
 
     private WheelCollider[] m_Wheels;
+
+    void Awake()
+    {
+        instance = this;
+        if (carRigidbody == null)
+        {
+            GetComponent<Rigidbody>();
+        }
+    }
 
     // Find all the WheelColliders down in the hierarchy.
     void Start()
