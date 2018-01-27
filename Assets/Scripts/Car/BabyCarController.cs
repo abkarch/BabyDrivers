@@ -9,6 +9,7 @@ public class BabyCarController : MonoBehaviour
     public CarPedal gasPedal;
     [Tooltip("Should point to the pedal for the brakes.")]
     public CarPedal brakePedal;
+    
 
     [Tooltip("Maximum steering angle of the wheels")]
     public float maxAngle = 30f;
@@ -100,7 +101,7 @@ public class BabyCarController : MonoBehaviour
     public float GetBrakingValue()
     {
         // Get value from brake pedal
-        if (gasPedal != null)
+        if (brakePedal != null)
         {
             return brakeTorque * brakePedal.PedalValue;
         }
