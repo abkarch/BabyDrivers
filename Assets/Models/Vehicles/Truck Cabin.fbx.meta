@@ -17,6 +17,12 @@ ModelImporter:
     100018: Shift_Stick
     100020: SteringWheel
     100022: //RootNode
+    100024: Cabin_Top
+    100026: CabinSides
+    100028: Seat_Back
+    100030: Seat_Back1
+    100032: Seat_Btm
+    100034: Seat_Btm1
     400000: Cabin
     400002: Dashboard
     400004: InnerWindows
@@ -29,6 +35,12 @@ ModelImporter:
     400018: Shift_Stick
     400020: SteringWheel
     400022: //RootNode
+    400024: Cabin_Top
+    400026: CabinSides
+    400028: Seat_Back
+    400030: Seat_Back1
+    400032: Seat_Btm
+    400034: Seat_Btm1
     2100000: CabinShell
     2100002: DashMat
     2100004: Seats
@@ -51,6 +63,12 @@ ModelImporter:
     2300016: Shift_Panel
     2300018: Shift_Stick
     2300020: SteringWheel
+    2300022: Cabin_Top
+    2300024: CabinSides
+    2300026: Seat_Back
+    2300028: Seat_Back1
+    2300030: Seat_Btm
+    2300032: Seat_Btm1
     3300000: Cabin
     3300002: Dashboard
     3300004: InnerWindows
@@ -62,6 +80,12 @@ ModelImporter:
     3300016: Shift_Panel
     3300018: Shift_Stick
     3300020: SteringWheel
+    3300022: Cabin_Top
+    3300024: CabinSides
+    3300026: Seat_Back
+    3300028: Seat_Back1
+    3300030: Seat_Btm
+    3300032: Seat_Btm1
     4300000: Cabin
     4300002: Dashboard
     4300004: Seat_F
@@ -73,6 +97,12 @@ ModelImporter:
     4300016: Pedal_Break
     4300018: Pedal_Gas
     4300020: InnerWindows
+    4300022: Cabin_Top
+    4300024: CabinSides
+    4300026: Seat_Back
+    4300028: Seat_Btm
+    4300030: Seat_Back1
+    4300032: Seat_Btm1
     9500000: //RootNode
   externalObjects: {}
   materials:
