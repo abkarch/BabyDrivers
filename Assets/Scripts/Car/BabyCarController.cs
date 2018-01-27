@@ -79,13 +79,20 @@ public class BabyCarController : MonoBehaviour
             switch(gearShift.CurrentGear)
             {
                 case GearShift.Gear.Drive:
-                    //TODO: make sure braking can't go in reverse
+                    if (torque < 0)
+                    {
+                        torque = 0;
+                    }
                     break;
                 case GearShift.Gear.Park:
                     torque = 0; //no acceleration in park
                     break;
                 case GearShift.Gear.Reverse:
                     torque *= -1; //reverse the acceleration
+                    if (torque > 0)
+                    {
+                        torque = 0;
+                    }
                     break;
             }
         }
