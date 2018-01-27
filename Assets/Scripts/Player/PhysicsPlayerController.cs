@@ -26,10 +26,6 @@ public class PhysicsPlayerController : MonoBehaviour
     private Vector3 lastDirection;
 
     private Animator anim;
-    private int speedFloat;
-    private int jumpBool;
-    private int hFloat;
-    private int vFloat;
     private int groundedBool;
     public Transform cameraTransform;
 
@@ -58,10 +54,6 @@ public class PhysicsPlayerController : MonoBehaviour
         {
             myRigidbody = GetComponent<Rigidbody>();
         }
-        speedFloat = Animator.StringToHash("Speed");
-        jumpBool = Animator.StringToHash("Jump");
-        hFloat = Animator.StringToHash("H");
-        vFloat = Animator.StringToHash("V");
         groundedBool = Animator.StringToHash("OnGround");
         //distToGround = GetComponent<Collider>().bounds.extents.y;
     }
@@ -90,10 +82,7 @@ public class PhysicsPlayerController : MonoBehaviour
     }
 
     void FixedUpdate()
-    {        
-        anim.SetFloat(hFloat, h);
-        anim.SetFloat(vFloat, v);
-
+    {
         anim.SetBool(groundedBool, CalculateIsGrounded());
         
         MovementManagement(h, v, run);
@@ -105,7 +94,6 @@ public class PhysicsPlayerController : MonoBehaviour
     {
         if (myRigidbody.velocity.y < 10) // already jumped
         {
-            anim.SetBool(jumpBool, false);
             if (timeToNextJump > 0)
                 timeToNextJump -= Time.deltaTime;
         }
@@ -113,13 +101,17 @@ public class PhysicsPlayerController : MonoBehaviour
         {
             if (Input.GetButtonDown("JumpP" + playerNum))
             {
-                anim.SetBool(jumpBool, true);
                 if (speed > 0 && timeToNextJump <= 0 && !aim)
                 {
                     myRigidbody.velocity = new Vector3(0, jumpVelocity, 0);
                     timeToNextJump = jumpCooldown;
                 }
             }
+            isGrounded = false;
+        }
+        if (!isGrounded)
+        {
+            anim.SetFloat("Jump", myRigidbody.velocity.y);
         }
     }
 
@@ -130,12 +122,10 @@ public class PhysicsPlayerController : MonoBehaviour
         if (isMoving)
         {
             speed = walkSpeed;
-            anim.SetFloat(speedFloat, speed, speedDampTime, Time.deltaTime);
         }
         else
         {
             speed = 0f;
-            anim.SetFloat(speedFloat, 0f);
             if (myRigidbody.velocity.y.AlmostEquals(0, .1f))
             {
                 myRigidbody.velocity = Vector3.zero;
@@ -248,8 +238,7 @@ public class PhysicsPlayerController : MonoBehaviour
     public void stopMoving()
     {
         speed = 0f;
-        anim.SetFloat(speedFloat, 0f);
-        isMoving = false;
+        isMoving = false;        
     }    
         
     public float Speed
@@ -282,7 +271,6 @@ public class PhysicsPlayerController : MonoBehaviour
     {
         myRigidbody.isKinematic = true;
         enabled = false;
-        anim.SetFloat(speedFloat, 0);
     }
 
     public void unlockControl()
