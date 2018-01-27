@@ -12,24 +12,24 @@ public class SplitScreen : MonoBehaviour {
     public Camera cam4;
 
     //Call this with int 1-4 to choose amount of screens
-    void NumSplitScreenPanels(int panels)
+    public void NumSplitScreenPanels(int panels)
     {
         switch (panels)
         {
             case 1:
                 Debug.Log("1 screen");
                 cam1.enabled = true;
-                cam2.enabled = false;
-                cam3.enabled = !true;
-                cam4.enabled = !true;
+               // cam2.enabled = false;
+              //  cam3.enabled = !true;
+               // cam4.enabled = !true;
                 cam1.rect = new Rect(0, 0, 1, 1);
                 break;
             case 2:
                 Debug.Log("2 screens");
                 cam1.enabled = true;
                 cam2.enabled = true;
-                cam3.enabled = !true;
-                cam4.enabled = !true;
+            //    cam3.enabled = !true;
+             //   cam4.enabled = !true;
                 cam1.rect = new Rect(0, 0.5f, 1, 0.5f);
                 cam2.rect = new Rect(0, 0, 1, 0.5f);
                 break;
@@ -59,5 +59,16 @@ public class SplitScreen : MonoBehaviour {
                 }
     }
 
+    public void setCam(int camNumber, Camera c) {
+        if(camNumber == 1) {
+            cam1 = c;
+        } else if (camNumber == 2) {
+            cam2 = c;
+        } else if (camNumber == 3) {
+            cam3 = c;
+        } else {
+            cam4 = c;
+        }
+    }
 	
 }

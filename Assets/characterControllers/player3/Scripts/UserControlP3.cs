@@ -4,7 +4,7 @@ using UnityEngine;
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
     [RequireComponent(typeof (ThirdPersonCharacter))]
-    public class ThirdPersonUserControl : MonoBehaviour
+    public class UserControlP3 : MonoBehaviour
     {
         private ThirdPersonCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
         public Transform m_Cam;                  // A reference to the main camera in the scenes transform
@@ -30,7 +30,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         {
             if (!m_Jump)
             {
-                m_Jump = Input.GetButtonDown("JumpP1");
+                m_Jump = Input.GetButtonDown("JumpP3");
             }
         }
 
@@ -39,8 +39,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private void FixedUpdate()
         {
             // read inputs
-            float h = Input.GetAxis("HorizontalP1");
-            float v = -Input.GetAxis("VerticalP1");
+            float h = Input.GetAxis("HorizontalP3");
+            float v = -Input.GetAxis("VerticalP3");
 
                 // calculate camera relative direction to move:
                 m_CamForward = Vector3.Scale(m_Cam.forward, new Vector3(1, 0, 1)).normalized;
