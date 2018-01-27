@@ -14,31 +14,30 @@ public class CarScript : MonoBehaviour {
 
     private int health;
     private float speed;
-    private float velocity;
     private float height;
-    private bool collision;
-    private GameObject car;
+    private Rigidbody body;
 
     // Use this for initialization
     void Start () {
-        collision = false;
         health = MAX_HEALTH;
         speed = 0.0F;
-        velocity = 0.0F;
-        car = GameObject.Find("Car");
+        body = BabyCarController.instance.carRigidbody;
+        height = body.position.y;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        speed = Mathf.Abs(velocity);
+        speed = body.velocity.magnitude;
+        height = body.position.y;
 
         // Car dies
         if (health <= 0 || height < MINIMUM_HEIGHT)
         {
+            body.position = new Vector3(0,0,0);
             Start();
         }
-	}
+    }
 
     // On collision, subtract from health depending on speed.
     void OnCollisionEnter(Collision col)
