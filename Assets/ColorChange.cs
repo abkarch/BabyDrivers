@@ -11,53 +11,51 @@ public class ColorChange : MonoBehaviour
     public GameObject[] bodyParts3 = new GameObject[6];
     public GameObject[] bodyParts4 = new GameObject[6];
 
-
-    private int[] colorIndexes = new int[4] { 0, 0, 0, 0 };
-    // BabyBase.Geo.arms.color =
-
-    // Use this for initialization
-
+    
+    public int[] colorIndexes = new int[4] { 0, 0, 0, 0 };
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("RightBumper1"))//change this when find out actual color
+        
+        if (Input.GetButtonDown("RightBumper1"))//change this when find out actual color
         {
+            Debug.Log("Changing color");
             ResetIndex(0);
             LoopBodyParts(0, bodyParts1);
         }
 
-        if (Input.GetButton("RightBumper2"))//change this when find out actual color
+        if (Input.GetButtonDown("RightBumper2"))//change this when find out actual color
         {
             ResetIndex(1);
             LoopBodyParts(1, bodyParts2);
         }
-        if (Input.GetButton("RightBumper3"))//change this when find out actual color
+        if (Input.GetButtonDown("RightBumper3"))//change this when find out actual color
         {
             ResetIndex(2);
             LoopBodyParts(2, bodyParts3);
         }
-        if (Input.GetButton("RightBumper4"))//change this when find out actual color
+        if (Input.GetButtonDown("RightBumper4"))//change this when find out actual color
         {
             ResetIndex(3);
             LoopBodyParts(3, bodyParts4);
         }
-        if (Input.GetButton("LeftBumper1"))//change this when find out actual color
+        if (Input.GetButtonDown("LeftBumper1"))//change this when find out actual color
         {
             ResetNegativeIndex(0);
             LoopBodyParts(0, bodyParts1);
         }
-        if (Input.GetButton("LeftBumper2"))//change this when find out actual color
+        if (Input.GetButtonDown("LeftBumper2"))//change this when find out actual color
         {
             ResetNegativeIndex(1);
             LoopBodyParts(1, bodyParts2);
         }
-        if (Input.GetButton("LeftBumper3"))//change this when find out actual color
+        if (Input.GetButtonDown("LeftBumper3"))//change this when find out actual color
         {
             ResetNegativeIndex(2);
             LoopBodyParts(2, bodyParts3);
         }
-        if (Input.GetButton("LeftBumper4"))//change this when find out actual color
+        if (Input.GetButtonDown("LeftBumper4"))//change this when find out actual color
         {
             ResetNegativeIndex(3);
             LoopBodyParts(3, bodyParts4);
@@ -68,7 +66,8 @@ public class ColorChange : MonoBehaviour
     {
         foreach (GameObject body in bodyParts)
         {
-            body.GetComponent<Material>().color = colors[colorIndexes[playerNum]].color;
+            body.GetComponent<SkinnedMeshRenderer>().materials = new Material[] { colors[colorIndexes[playerNum]] };
+            Debug.Log("colors[colorIndexes[playerNum]]");
         }
     }
 
