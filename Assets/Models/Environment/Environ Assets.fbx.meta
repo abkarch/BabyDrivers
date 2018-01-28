@@ -1,0 +1,161 @@
+fileFormatVersion: 2
+guid: cdf8734a70e4d45619377a9d09dfa08f
+timeCreated: 1517097621
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Cat_1
+    100002: Cat_2
+    100004: Cat_3
+    100006: Cat_4
+    100008: Cat_5
+    100010: Door
+    100012: //RootNode
+    100014: Fence_Beam
+    100016: Fence_Picket
+    100018: FireHydrant
+    100020: Mailbox
+    100022: Traffic_Cone
+    100024: Trash_Can
+    100026: Window_Long
+    100028: Window_Square
+    400000: Cat_1
+    400002: Cat_2
+    400004: Cat_3
+    400006: Cat_4
+    400008: Cat_5
+    400010: Door
+    400012: //RootNode
+    400014: Fence_Beam
+    400016: Fence_Picket
+    400018: FireHydrant
+    400020: Mailbox
+    400022: Traffic_Cone
+    400024: Trash_Can
+    400026: Window_Long
+    400028: Window_Square
+    2100000: Env_Assets
+    2300000: Cat_1
+    2300002: Cat_2
+    2300004: Cat_3
+    2300006: Cat_4
+    2300008: Cat_5
+    2300010: Door
+    2300012: Fence_Beam
+    2300014: Fence_Picket
+    2300016: FireHydrant
+    2300018: Mailbox
+    2300020: Traffic_Cone
+    2300022: Trash_Can
+    2300024: Window_Long
+    2300026: Window_Square
+    3300000: Cat_1
+    3300002: Cat_2
+    3300004: Cat_3
+    3300006: Cat_4
+    3300008: Cat_5
+    3300010: Door
+    3300012: Fence_Beam
+    3300014: Fence_Picket
+    3300016: FireHydrant
+    3300018: Mailbox
+    3300020: Traffic_Cone
+    3300022: Trash_Can
+    3300024: Window_Long
+    3300026: Window_Square
+    4300000: Traffic_Cone
+    4300002: Fence_Picket
+    4300004: Fence_Beam
+    4300006: Window_Square
+    4300008: Window_Long
+    4300010: Door
+    4300012: Trash_Can
+    4300014: Mailbox
+    4300016: FireHydrant
+    4300018: Cat_1
+    4300020: Cat_2
+    4300022: Cat_3
+    4300024: Cat_4
+    4300026: Cat_5
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
