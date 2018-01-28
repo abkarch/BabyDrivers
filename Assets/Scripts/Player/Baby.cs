@@ -33,7 +33,7 @@ public class Baby : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (state == "free")
         {
@@ -112,7 +112,7 @@ public class Baby : MonoBehaviour
         {
             playerController.lockControl();
         }
-        objRigidbody.isKinematic = false;
+        objRigidbody.isKinematic = true;
         objRigidbody.useGravity = false;
     }
 
@@ -122,7 +122,7 @@ public class Baby : MonoBehaviour
         {
             playerController.unlockControl();
         }
-        objRigidbody.isKinematic = true;
+        objRigidbody.isKinematic = false;
         objRigidbody.useGravity = true;
     }
 
