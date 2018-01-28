@@ -13,7 +13,10 @@ public class GearShift : MonoBehaviour
 
     [Tooltip("Gear types in order for this gear shift.")]
     public Gear[] possibleGears;
-
+    public Transform[] IndicatorTransitionLocations;
+    public GameObject gearIndicator;
+    public Transform gearShaft;
+    private Vector3[] rots;
     public int currentGearIndex = 0;
 
     public Gear CurrentGear
@@ -26,7 +29,7 @@ public class GearShift : MonoBehaviour
                 if (possibleGears[i] == value)
                 {
                     currentGearIndex = i;
-                    UpdateVisual();
+                    UpdateVisual(true);
                     break;
                 }
             }
@@ -43,11 +46,24 @@ public class GearShift : MonoBehaviour
             possibleGears[1] = Gear.Reverse;
             possibleGears[2] = Gear.Drive;
         }
+
+
     }
 
-    public void UpdateVisual()
+    public void Start() {
+        rots = new Vector3[3];
+        rots[0] = new Vector3(0, 30, 0);
+        rots[1] = new Vector3(0, 0, 0);
+        rots[2] = new Vector3(0, -30, 0);
+    }
+
+    public void UpdateVisual(bool b)
     {
-        //TODO: move the gear visually to the currentGear
+        gearIndicator.transform.position = IndicatorTransitionLocations[currentGearIndex].transform.position;
+        if(b)
+          gearShaft.transform.Rotate(rots[0]);
+        else
+          gearShaft.transform.Rotate(rots[2]);
     }
 
     public bool ShiftGearUp()
@@ -55,7 +71,7 @@ public class GearShift : MonoBehaviour
         if (currentGearIndex > 0)
         {
             currentGearIndex--;
-            UpdateVisual();
+            UpdateVisual(true);
             return true;
         }
         return false;
@@ -67,7 +83,7 @@ public class GearShift : MonoBehaviour
         if (currentGearIndex < possibleGears.Length - 1)
         {
             currentGearIndex++;
-            UpdateVisual();
+            UpdateVisual(false);
             return true;
         }
         return false;

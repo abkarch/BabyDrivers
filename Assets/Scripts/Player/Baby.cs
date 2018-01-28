@@ -10,13 +10,14 @@ public class Baby : MonoBehaviour
     public string state;
     public Animator anim;
     public BabyCarController car;
+    public bool canShiftChange;
 
     triggerZone zoneIn = null;
 
     private void Start()
     {
         state = "free";
-
+        canShiftChange = true;
         car = BabyCarController.instance;
 
         if (objRigidbody != null)
@@ -56,6 +57,8 @@ public class Baby : MonoBehaviour
                 RunSteeringState();
             } else if (state == "Pedaling") {
                 RunPedalingState();
+            } else if (state == "Shifting") {
+                RunShiftingState();
             }
         }
     }
@@ -177,6 +180,27 @@ public class Baby : MonoBehaviour
 
         car.gasPedal.PedalValue = gasIn;
         car.brakePedal.PedalValue = brakeIn;
+    }
+
+    public void RunShiftingState() {
+        float h = Input.GetAxis("HorizontalP" + playerNum);
+        if (h < -0.5f && canShiftChange) {
+            if (car.gearShift.ShiftGearUp()) {
+                StartCoroutine("animTimer");
+                anim.CrossFade("swipeLeft", 0.1f);
+            }
+        } else if (h > 0.5f && canShiftChange) {
+            if (car.gearShift.ShiftGearDown()) {
+                StartCoroutine("animTimer");
+                anim.CrossFade("swipeRight", 0.1f);
+            }
+        }
+    }
+
+    public IEnumerator animTimer() {
+        canShiftChange = false;
+        yield return new WaitForSeconds(2.0f);
+        canShiftChange = true;
     }
 }
 
