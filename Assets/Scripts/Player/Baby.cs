@@ -9,10 +9,13 @@ public class Baby : MonoBehaviour
     public Rigidbody objRigidbody;
     public string state;
     public Animator anim;
+    public BabyCarController car;
 
     private void Start()
     {
         state = "free";
+
+        car = BabyCarController.instance;
 
         if (objRigidbody != null)
         {
@@ -25,6 +28,14 @@ public class Baby : MonoBehaviour
         if (playerController != null)
         {
             playerController.SetPlayerNum(playerNum);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (state == "Steering")
+        {
+            RunSteeringState();
         }
     }
 
@@ -97,6 +108,29 @@ public class Baby : MonoBehaviour
             g.transform.Rotate(Vector3.Lerp(g.transform.rotation.eulerAngles, newPos.transform.rotation.eulerAngles, Time.deltaTime));
             yield return null;
         }
+    }
+
+    public void RunSteeringState()
+    {
+        gameObject.transform.parent = car.gameObject.transform;
+        float turn = Input.GetAxis("HorizontalP" + playerNum);
+        anim.SetFloat("Turn", 01.5f * -turn, 0.1f, Time.deltaTime);
+        if (turn < 0)
+        {
+            car.steeringWheel.Rotate(-Mathf.Sign(turn) * car.steeringWheel.rate * Time.deltaTime);
+            this.gameObject.transform.position = Vector3.Lerp(this.gameObject.transform.position, car.steeringWheel.leftRotationPlayerPos.position, 10 * Time.deltaTime);
+        }
+        else if (turn > 0)
+        {
+            car.steeringWheel.Rotate(-Mathf.Sign(turn) * car.steeringWheel.rate * Time.deltaTime);
+            this.gameObject.transform.position = Vector3.Lerp(this.gameObject.transform.position, car.steeringWheel.rightRotationPlayerPos.position, 10 * Time.deltaTime);
+        }
+        else
+        {
+            this.gameObject.transform.position = Vector3.Lerp(this.gameObject.transform.position, car.steeringWheel.originalPlayerPos.position, 10 * Time.deltaTime);
+            car.steeringWheel.RotateWheelBackToZero();
+        }
+
     }
 }
 
