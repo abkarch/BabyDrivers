@@ -84,7 +84,8 @@ public class Baby : MonoBehaviour
         {
             disablePhysics();
             state = s;
-            StartCoroutine(tweenBaby(this.gameObject, t.babyLocation, 10));
+            StartCoroutine(tweenBaby(this.gameObject, t.babyLocation, 15));
+            
             Debug.Log("Setting bool: " + s);
             anim.SetBool(s, true);
         }
@@ -128,7 +129,7 @@ public class Baby : MonoBehaviour
 
     private IEnumerator tweenBaby(GameObject g, Transform newPos, int i)
     {
-        while (!(g.transform.position.AlmostEquals(newPos.transform.position, .01f)) || !(g.transform.rotation.AlmostEquals(newPos.transform.rotation, 1f)))
+        while (!(g.transform.position.AlmostEquals(newPos.transform.position, .01f)) && !(g.transform.rotation.AlmostEquals(newPos.transform.rotation, 1f)))
         {
             g.transform.position = Vector3.Lerp(g.transform.position, newPos.transform.position, Time.deltaTime * i);
             g.transform.rotation = Quaternion.Slerp(g.transform.rotation, newPos.transform.rotation, Time.deltaTime * i);
