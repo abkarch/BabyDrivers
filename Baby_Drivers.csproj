@@ -291,6 +291,8 @@
     <Compile Include="Assets\characterControllers\player4\Scripts\UserControlP4.cs" />
     <Compile Include="Assets\characterControllers\scripts\ThirdPersonCamera.cs" />
     <Compile Include="Assets\characterControllers\scripts\ThirdPersonCharacter.cs" />
+    <Compile Include="Assets\ColorChange.cs" />
+    <Compile Include="Assets\CompassScript.cs" />
     <Compile Include="Assets\EnableBabyBase.cs" />
     <Compile Include="Assets\Fx Explosion Pack\Script\csLightControl.cs" />
     <Compile Include="Assets\Fx Explosion Pack\Script\DestroyEffect.cs" />
