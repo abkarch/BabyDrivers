@@ -196,8 +196,16 @@ public class Baby : MonoBehaviour
 
     public void RunPedalingState() {
         float gasIn = Input.GetAxis("Interact1P" + playerNum);
+        if (gasIn == 0 && Input.GetButton("RightBumper" + playerNum))
+        {
+            gasIn = 1;
+        }
         Debug.Log(gasIn);
         float brakeIn = Input.GetAxis("Interact2P" + playerNum);
+        if (brakeIn == 0 && Input.GetButton("LeftBumper" + playerNum))
+        {
+            brakeIn = 1;
+        }
         anim.SetFloat("gas", Mathf.Lerp(anim.GetFloat("gas"), gasIn, 5 * Time.deltaTime));
         anim.SetFloat("brake", Mathf.Lerp(anim.GetFloat("brake"), brakeIn, 5 * Time.deltaTime));
         anim.SetFloat("idle", 1.0f);
