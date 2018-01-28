@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PhysicsPlayerController : MonoBehaviour
 {
-    int playerNum = 1;
+    public int playerNum = 1;
     public Rigidbody myRigidbody;
     public float gravity = 9.8f;
     //limits the y velocity of the player, so the player does not get flung upwards
@@ -32,11 +32,6 @@ public class PhysicsPlayerController : MonoBehaviour
     private float h;
     private float v;
 
-    private bool aim;
-    private bool rightAim = false;
-
-    private bool run;
-
     private bool isMoving;
     public bool IsMoving { get { return isMoving; } }
 
@@ -61,6 +56,11 @@ public class PhysicsPlayerController : MonoBehaviour
     {
     }
 
+    public void SetPlayerNum(int num)
+    {
+        playerNum = num;
+    }
+
     bool CalculateIsGrounded()
     {
         isGrounded = Physics.Raycast(transform.position +new Vector3(0,.01f, 0), -Vector3.up, distToGround + 0.2f);
@@ -77,12 +77,12 @@ public class PhysicsPlayerController : MonoBehaviour
         h = Input.GetAxis("HorizontalP" + playerNum);
         v = Input.GetAxis("VerticalP" + playerNum);
 
-        isMoving = Mathf.Abs(h) > 0.1 || Mathf.Abs(v) > 0.1 || run;
+        isMoving = Mathf.Abs(h) > 0.1 || Mathf.Abs(v) > 0.1;
     }
 
     void FixedUpdate()
     {        
-        MovementManagement(h, v, run);
+        MovementManagement(h, v);
 
         JumpManagement();
     }
@@ -99,7 +99,7 @@ public class PhysicsPlayerController : MonoBehaviour
         {
             if (Input.GetButtonDown("JumpP" + playerNum))
             {
-                if (speed > 0 && timeToNextJump <= 0 && !aim)
+                if (timeToNextJump <= 0)
                 {
                     myRigidbody.velocity = new Vector3(0, jumpVelocity, 0);
                     timeToNextJump = jumpCooldown;
@@ -118,7 +118,7 @@ public class PhysicsPlayerController : MonoBehaviour
         anim.SetBool("OnGround", isGrounded);
     }
 
-    void MovementManagement(float horizontal, float vertical, bool running)
+    void MovementManagement(float horizontal, float vertical)
     {
         Rotating(horizontal, vertical);
 
@@ -150,7 +150,14 @@ public class PhysicsPlayerController : MonoBehaviour
             }
             else
             {
-                forward = GameManager.instance.ActiveCamera.transform.TransformDirection(Vector3.up);
+                if (GameManager.instance != null)
+                {
+                    forward = GameManager.instance.ActiveCamera.transform.TransformDirection(Vector3.up);
+                }
+                else
+                {
+                    forward = Camera.main.transform.TransformDirection(Vector3.up);
+                }
             }
             forward.y = 0.0f;
 
@@ -194,7 +201,15 @@ public class PhysicsPlayerController : MonoBehaviour
         }
         else
         {
-            forward = GameManager.instance.ActiveCamera.transform.TransformDirection(Vector3.up);
+            if (GameManager.instance != null)
+            {
+                forward = GameManager.instance.ActiveCamera.transform.TransformDirection(Vector3.up);
+            }
+            else
+            {
+                forward = Camera.main.transform.TransformDirection(Vector3.up);
+
+            }
         }
         forward.y = 0.0f;
         forward = forward.normalized;
@@ -219,11 +234,6 @@ public class PhysicsPlayerController : MonoBehaviour
         }   
         
         return targetDirection;
-    }
-
-    public bool isRunning()
-    {
-        return run;
     }
 
     public void stopMoving()
