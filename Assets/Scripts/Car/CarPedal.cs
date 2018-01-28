@@ -31,7 +31,7 @@ public class CarPedal : MonoBehaviour
         Debug.Log(PedalValue);
         Vector3 t = depthMarker.transform.position - gameObject.transform.position;
         t *= PedalValue;
-        transform.position = Vector3.Lerp(gameObject.transform.position, depthMarker.transform.position - t, Time.deltaTime * pedalPushRate);
+        transform.position = Vector3.Lerp(gameObject.transform.position, depthMarker.transform.position, Time.deltaTime * pedalPushRate);
     }    
 
     public void resetPedal() {
