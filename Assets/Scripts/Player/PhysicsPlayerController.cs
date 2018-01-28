@@ -3,11 +3,10 @@ using System.Collections;
 
 public class PhysicsPlayerController : MonoBehaviour
 {
+    public LayerMask groundedMask;
     public int playerNum = 1;
     public Rigidbody myRigidbody;
     public float gravity = 9.8f;
-    //limits the y velocity of the player, so the player does not get flung upwards
-    public float maxYVelocity = 2f;
 
     public float walkSpeed = 1f;
 
@@ -72,7 +71,12 @@ public class PhysicsPlayerController : MonoBehaviour
 
     bool CalculateIsGrounded()
     {
-        isGrounded = Physics.Raycast(transform.position +new Vector3(0,.01f, 0), -Vector3.up, distToGround + 0.2f);
+        RaycastHit hitInfo;
+        isGrounded = Physics.Raycast(transform.position +new Vector3(0,.01f, 0), -Vector3.up, distToGround + 0.2f, groundedMask);
+        if (!isGrounded)
+        { //do a spherecast to be sure
+            isGrounded = Physics.SphereCast(transform.position + new Vector3(0, .01f, 0), .3f, -Vector3.up, out hitInfo, distToGround + 0.2f, groundedMask);
+        }
         return isGrounded;
     }
 
