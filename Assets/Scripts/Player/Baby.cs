@@ -33,7 +33,7 @@ public class Baby : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (state == "free")
         {
@@ -112,7 +112,7 @@ public class Baby : MonoBehaviour
         {
             playerController.lockControl();
         }
-        objRigidbody.isKinematic = false;
+        objRigidbody.isKinematic = true;
         objRigidbody.useGravity = false;
     }
 
@@ -122,18 +122,18 @@ public class Baby : MonoBehaviour
         {
             playerController.unlockControl();
         }
-        objRigidbody.isKinematic = true;
+        objRigidbody.isKinematic = false;
         objRigidbody.useGravity = true;
     }
 
     private IEnumerator tweenBaby(GameObject g, Transform newPos, int i)
     {
-        while (g.transform.position != newPos.transform.position && g.transform.rotation != newPos.transform.rotation)
+        while (!(g.transform.position.AlmostEquals(newPos.transform.position, .01f)) || !(g.transform.rotation.AlmostEquals(newPos.transform.rotation, 1f)))
         {
             g.transform.position = Vector3.Lerp(g.transform.position, newPos.transform.position, Time.deltaTime * i);
             g.transform.rotation = Quaternion.Slerp(g.transform.rotation, newPos.transform.rotation, Time.deltaTime * i);
             yield return null;
-        }
+        };
     }
 
     public void RunSteeringState()

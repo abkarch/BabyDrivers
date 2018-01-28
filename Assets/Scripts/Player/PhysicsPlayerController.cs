@@ -43,6 +43,8 @@ public class PhysicsPlayerController : MonoBehaviour
 
     private bool isGrounded = false;
 
+    private bool canMove = true;
+
 	public void Initialize(Transform inCamTran)
 	{
 		cameraTransform = inCamTran;
@@ -112,7 +114,8 @@ public class PhysicsPlayerController : MonoBehaviour
     }
 
     void FixedUpdate()
-    {        
+    {
+        if (!canMove) return;        
         MovementManagement(h, v);
 
         JumpManagement();
@@ -178,7 +181,7 @@ public class PhysicsPlayerController : MonoBehaviour
 
             if (cameraTransform != null)
             {
-                forward = cameraTransform.TransformDirection(Vector3.up);
+				forward = cameraTransform.forward;// cameraTransform.TransformDirection(Vector3.up);
             }
             else
             {
@@ -282,13 +285,15 @@ public class PhysicsPlayerController : MonoBehaviour
 
     public void lockControl()
     {
+        Debug.Log("lock control");
         myRigidbody.isKinematic = true;
-        enabled = false;
+        canMove = false;
     }
 
     public void unlockControl()
     {
+        Debug.Log("unlock control");
         myRigidbody.isKinematic = false;
-        enabled = true;
+        canMove = true;
     }    
 }
