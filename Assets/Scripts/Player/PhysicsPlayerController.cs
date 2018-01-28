@@ -5,7 +5,7 @@ public class PhysicsPlayerController : MonoBehaviour
 {
     int playerNum = 1;
     public Rigidbody myRigidbody;
-    public float gravity = 10;
+    public float gravity = 9.8f;
     //limits the y velocity of the player, so the player does not get flung upwards
     public float maxYVelocity = 2f;
 
@@ -40,7 +40,7 @@ public class PhysicsPlayerController : MonoBehaviour
     private bool isMoving;
     public bool IsMoving { get { return isMoving; } }
 
-    private float distToGround;
+    private float distToGround = 0;
 
     private bool isGrounded = false;
 
@@ -55,7 +55,6 @@ public class PhysicsPlayerController : MonoBehaviour
             myRigidbody = GetComponent<Rigidbody>();
         }
         groundedBool = Animator.StringToHash("OnGround");
-        //distToGround = GetComponent<Collider>().bounds.extents.y;
     }
 
     void Start()
@@ -64,7 +63,7 @@ public class PhysicsPlayerController : MonoBehaviour
 
     bool CalculateIsGrounded()
     {
-        isGrounded = Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
+        isGrounded = Physics.Raycast(transform.position +new Vector3(0,.01f, 0), -Vector3.up, distToGround + 0.2f);
         return isGrounded;
     }
 
@@ -82,9 +81,7 @@ public class PhysicsPlayerController : MonoBehaviour
     }
 
     void FixedUpdate()
-    {
-        anim.SetBool(groundedBool, CalculateIsGrounded());
-        
+    {        
         MovementManagement(h, v, run);
 
         JumpManagement();
@@ -97,6 +94,7 @@ public class PhysicsPlayerController : MonoBehaviour
             if (timeToNextJump > 0)
                 timeToNextJump -= Time.deltaTime;
         }
+        CalculateIsGrounded();
         if (isGrounded)
         {
             if (Input.GetButtonDown("JumpP" + playerNum))
@@ -105,14 +103,19 @@ public class PhysicsPlayerController : MonoBehaviour
                 {
                     myRigidbody.velocity = new Vector3(0, jumpVelocity, 0);
                     timeToNextJump = jumpCooldown;
+                    isGrounded = false;
                 }
             }
-            isGrounded = false;
         }
         if (!isGrounded)
         {
             anim.SetFloat("Jump", myRigidbody.velocity.y);
         }
+        else
+        {
+            anim.SetFloat("Jump", 0);
+        }
+        anim.SetBool("OnGround", isGrounded);
     }
 
     void MovementManagement(float horizontal, float vertical, bool running)
@@ -218,18 +221,6 @@ public class PhysicsPlayerController : MonoBehaviour
         return targetDirection;
     }
 
-    private void Repositioning(float repositionTurnSmoothing)
-    {
-        Vector3 repositioning = lastDirection;
-        if (repositioning != Vector3.zero)
-        {
-            repositioning.y = 0;
-            Quaternion targetRotation = Quaternion.LookRotation(repositioning, Vector3.up);
-            Quaternion newRotation = Quaternion.Slerp(GetComponent<Rigidbody>().rotation, targetRotation, repositionTurnSmoothing * Time.deltaTime);
-            GetComponent<Rigidbody>().MoveRotation(newRotation);
-        }
-    }
-
     public bool isRunning()
     {
         return run;
@@ -245,27 +236,6 @@ public class PhysicsPlayerController : MonoBehaviour
     {
         get { return speed; }
     }
-
-    public void setAimRight()
-    {
-        rightAim = true;
-    }
-
-    public void setAimLeft()
-    {
-        rightAim = false;
-    }
-
-    public void toggleAimSide()
-    {
-        rightAim = !rightAim;
-    }
-
-    public bool isAimingRight()
-    {
-        return rightAim && aim;
-    }
-    
 
     public void lockControl()
     {
