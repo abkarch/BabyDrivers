@@ -27,8 +27,6 @@ public class ThirdPersonCamera : MonoBehaviour
 		_Target = inTarget.transform;
 
 		_Cam = GetComponent<Camera>();
-
-		Debug.LogFormat("Did we find target and cam? {0} {1}", _Target, _Cam);
 	}
 
 	public void UpdateFromInput(float inX, float inY)
@@ -42,17 +40,15 @@ public class ThirdPersonCamera : MonoBehaviour
 		if (nextX < -180f) nextX += 360f;
 
 		Vector3 toCam = Quaternion.Euler(_CurrentY, nextX, 0f) * Vector3.forward;
-		if (Physics.SphereCast(origin, Cam.nearClipPlane, toCam, out hit, Distance, ColliderLayer) == true)
+		if (Physics.SphereCast(origin, Cam.nearClipPlane, toCam, out hit, Distance, ColliderLayer.value) == true)
 		{
-			if (hit.distance > MinDistance)
+			if (hit.distance < MinDistance)
 			{
-				_CurrentX = nextX;
+				nextX -= inX;
 			}
 		}
-		else
-		{
-			_CurrentX = nextX;
-		}
+
+		_CurrentX = nextX;
 
 		// Y is clamped
 		float nextY = _CurrentY + inY;
@@ -60,17 +56,15 @@ public class ThirdPersonCamera : MonoBehaviour
 		if (nextY < -MaxVerticalAngle) nextY = -MaxVerticalAngle;
 
 		toCam = Quaternion.Euler(nextY, _CurrentX, 0f) * Vector3.forward;
-		if (Physics.SphereCast(origin, Cam.nearClipPlane, toCam, out hit, Distance, ColliderLayer) == true)
+		if (Physics.SphereCast(origin, Cam.nearClipPlane, toCam, out hit, Distance, ColliderLayer.value) == true)
 		{
-			if (hit.distance > MinDistance)
+			if (hit.distance < MinDistance)
 			{
-				_CurrentY = nextY;
+				nextY -= inY;
 			}
 		}
-		else
-		{
-			_CurrentY = nextY;
-		}
+
+		_CurrentY = nextY;
 	}
 
 	private void LateUpdate()
@@ -85,7 +79,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
 		Vector3 origin = _Target.position + _Offset;
 		RaycastHit hit;
-		if (Physics.SphereCast(origin, Cam.nearClipPlane, toCam, out hit, Distance, ColliderLayer) == true)
+		if (Physics.SphereCast(origin, Cam.nearClipPlane, toCam, out hit, Distance, ColliderLayer.value) == true)
 		{
 			transform.position = hit.point + (hit.normal * _Cam.nearClipPlane);
 		}

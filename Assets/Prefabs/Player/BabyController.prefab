@@ -1840,6 +1840,7 @@ MonoBehaviour:
   objRigidbody: {fileID: 54507959694064390}
   state: 
   anim: {fileID: 95908308463612712}
+  car: {fileID: 0}
 --- !u!114 &114983935533293204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1859,9 +1860,9 @@ MonoBehaviour:
   turnSmoothing: 3
   speedDampTime: 0.1
   autoAimMaxAngleOffset: 10
-  jumpVelocity: 30
+  jumpVelocity: 5
   jumpCooldown: 0.2
-  cameraTransform: {fileID: 0}
+  camSpeed: 4
 --- !u!136 &136676066174367838
 CapsuleCollider:
   m_ObjectHideFlags: 1

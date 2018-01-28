@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,7 +35,7 @@ public class PlayerManager : MonoBehaviour {
                 b.SetPlayerNum(i + 1);
             }
             g.transform.position = gameObject.transform.position;
-//            g.transform.parent = gameObject.transform;
+            g.transform.parent = gameObject.transform;
 			GameObject cam = GameObject.Instantiate(CameraPrefab);
 			ThirdPersonCamera tpc = cam.GetComponent<ThirdPersonCamera>();
             if (tpc != null)
