@@ -61,6 +61,7 @@ public class PhysicsPlayerController : MonoBehaviour
         {
             myRigidbody = GetComponent<Rigidbody>();
         }
+        myRigidbody.useGravity = false; //we handle gravity ourself
         groundedBool = Animator.StringToHash("OnGround");
     }
 
@@ -172,11 +173,9 @@ public class PhysicsPlayerController : MonoBehaviour
 
         anim.SetFloat("Forward", speed, 0.1f, Time.deltaTime);
 
+        Vector3 currVelocity = myRigidbody.velocity;
         if (isMoving)
-        {
-            Vector3 targetVelocity = speed * transform.forward;
-            Vector3 currVelocity = myRigidbody.velocity;
-            
+        {            
             Vector3 forward;
 
             if (cameraTransform != null)
@@ -208,13 +207,27 @@ public class PhysicsPlayerController : MonoBehaviour
             {
                 dir.Normalize();
             }
+            Vector3 targetVelocity = speed * dir;
 
-            targetVelocity = speed * dir;
-
+            if (BabyCarController.instance != null)
+            { //account for the car's velocity
+                targetVelocity += BabyCarController.instance.carRigidbody.velocity;
+            }
 
             Vector3 velocityChange = targetVelocity - currVelocity;
             velocityChange.y = 0;
             myRigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
+        }
+        else
+        {
+            //just match to the car's speed to stop sliding
+            if (BabyCarController.instance != null)
+            {
+                Vector3 targetVelocity = BabyCarController.instance.carRigidbody.velocity;
+                Vector3 velocityChange = targetVelocity - currVelocity;
+                velocityChange.y = 0;
+                myRigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
+            }
         }
 
         //apply gravity
