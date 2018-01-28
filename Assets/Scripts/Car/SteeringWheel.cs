@@ -11,6 +11,7 @@ public class SteeringWheel : MonoBehaviour
     public Transform leftRotationPlayerPos;
     public Transform rightRotationPlayerPos;
     public Transform originalPlayerPos;
+    public Transform cameraLocation;
 
     float angle = 0;
     public float rate;
