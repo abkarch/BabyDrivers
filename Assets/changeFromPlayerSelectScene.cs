@@ -15,14 +15,17 @@ public class changeFromPlayerSelectScene : MonoBehaviour {
     public GameObject BabyBase3;
     public GameObject BabyBase4;
 
+    
     public Material defaultColor;
 
     void Start()
     {
-        PlayerNamesData.playerColor1= defaultColor;
-        PlayerNamesData.playerColor2 = defaultColor;
-        PlayerNamesData.playerColor3 = defaultColor;
-        PlayerNamesData.playerColor4 = defaultColor;
+        PlayerNamesData.playerColor = new Material[4];
+
+        PlayerNamesData.playerColor[0]= defaultColor;
+        PlayerNamesData.playerColor[1] = defaultColor;
+        PlayerNamesData.playerColor[2] = defaultColor;
+        PlayerNamesData.playerColor[3] = defaultColor;
     }
 
     public void ChangeToScene (string scenetochangeTo) {
@@ -35,10 +38,10 @@ public class changeFromPlayerSelectScene : MonoBehaviour {
 
         Debug.Log(names[0] + names[1] + names[2]  + names[3]);
 
-        PlayerNamesData.playerColor1 = BabyBase1.GetComponentInChildren<SkinnedMeshRenderer>().materials[0];
-        PlayerNamesData.playerColor2 = BabyBase2.GetComponentInChildren<SkinnedMeshRenderer>().materials[0];
-        PlayerNamesData.playerColor3 = BabyBase3.GetComponentInChildren<SkinnedMeshRenderer>().materials[0];
-        PlayerNamesData.playerColor4 = BabyBase4.GetComponentInChildren<SkinnedMeshRenderer>().materials[0];
+        PlayerNamesData.playerColor[0] = BabyBase1.GetComponentInChildren<SkinnedMeshRenderer>().materials[0];
+        PlayerNamesData.playerColor[1] = BabyBase2.GetComponentInChildren<SkinnedMeshRenderer>().materials[0];
+        PlayerNamesData.playerColor[2] = BabyBase3.GetComponentInChildren<SkinnedMeshRenderer>().materials[0];
+        PlayerNamesData.playerColor[3] = BabyBase4.GetComponentInChildren<SkinnedMeshRenderer>().materials[0];
 
 
 

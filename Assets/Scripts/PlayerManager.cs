@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour {
     public int numberOfPlayers;
     public GameObject playerPrefab;
     private SplitScreen ss;
+    public Material defaultColor;
 
 	public GameObject CameraPrefab;
 
@@ -25,6 +26,9 @@ public class PlayerManager : MonoBehaviour {
 
     public void startMatch() {
         numberOfPlayers = PlayerNamesData.playerCount;
+        if (PlayerNamesData.playerColor == null)
+            FillDefaultColors();
+
         if(numberOfPlayers < 1) {
             numberOfPlayers = 1;
         }
@@ -59,31 +63,47 @@ public class PlayerManager : MonoBehaviour {
 		
 	}
 
-    private void ChangeColor(Baby infant,int playerNum)
+    private void FillDefaultColors()
     {
-         SkinnedMeshRenderer[] bodyParts = infant.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
-        foreach(SkinnedMeshRenderer skin in bodyParts)
+            PlayerNamesData.playerColor = new Material[4];
+            for(int i=0;i<4;i++)
+                PlayerNamesData.playerColor[i] = defaultColor;
+    }
+    private void ChangeColor(Baby infant, int playerNum)
+    {
+        SkinnedMeshRenderer[] bodyParts = infant.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+        
+
+        if (infant != null)
         {
-            //if(skin.) Make diaper and eyes not match color
-            switch (playerNum)
+            foreach (SkinnedMeshRenderer skin in bodyParts)
             {
-                case 1:
-                    Material[] newMat = new Material[] { PlayerNamesData.playerColor1 };
-                    skin.materials = newMat;
-                    break;
-                case 2:
-                    Material[] newMat2 = new Material[] { PlayerNamesData.playerColor1 };
-                    skin.materials = newMat2;
-                    break;
-                case 3:
-                    Material[] newMat3 = new Material[] { PlayerNamesData.playerColor1 };
-                    skin.materials = newMat3;
-                    break;
-                case 4:
-                    Material[] newMat4 = new Material[] { PlayerNamesData.playerColor1 };
-                    skin.materials = newMat4;
-                    break;
-             }
+                if (PlayerNamesData.playerColor[playerNum] != null)
+                {
+                    if (skin.gameObject.name != "Diap" && skin.gameObject.name != "Eyes")
+                    {
+                        switch (playerNum)
+                        {
+                            case 1:
+                                Material[] newMat = new Material[] { PlayerNamesData.playerColor[0] };
+                                skin.materials = newMat;
+                                break;
+                            case 2:
+                                Material[] newMat2 = new Material[] { PlayerNamesData.playerColor[1] };
+                                skin.materials = newMat2;
+                                break;
+                            case 3:
+                                Material[] newMat3 = new Material[] { PlayerNamesData.playerColor[2] };
+                                skin.materials = newMat3;
+                                break;
+                            case 4:
+                                Material[] newMat4 = new Material[] { PlayerNamesData.playerColor[3] };
+                                skin.materials = newMat4;
+                                break;
+                        }
+                    }
+                }
+            }
         }
     }
 
