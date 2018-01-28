@@ -20,7 +20,7 @@ public class ThirdPersonCamera : MonoBehaviour
 	private float _CurrentX = 0f;
 	private float _CurrentY = 0f;
 
-	private Vector3 _Offset = Vector3.up * 0.3f;
+	private Vector3 _Offset = Vector3.up * 0.2f;
 
 	public void Initialize(GameObject inTarget)
 	{
