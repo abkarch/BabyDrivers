@@ -217,11 +217,11 @@ public class PhysicsPlayerController : MonoBehaviour
         //apply gravity
         myRigidbody.AddForce(new Vector3(0, -gravity * myRigidbody.mass, 0));
         Vector3 currentVelocity = myRigidbody.velocity;
-        if (currentVelocity.y > maxYVelocity)
-        {
-            currentVelocity = new Vector3(currentVelocity.x, maxYVelocity, currentVelocity.z);
-            myRigidbody.velocity = currentVelocity;
-        }
+//        if (currentVelocity.y > maxYVelocity)
+//        {
+//            currentVelocity = new Vector3(currentVelocity.x, maxYVelocity, currentVelocity.z);
+//            myRigidbody.velocity = currentVelocity;
+//        }
     }
 
     Vector3 Rotating(float horizontal, float vertical, bool ignoreCameraRot = false)
