@@ -9,6 +9,7 @@ public class EnableBabyBase : MonoBehaviour
     public GameObject BabyBase3;
     public GameObject BabyBase4;
 
+    public int playerCount;
 
     void Start()
     {
@@ -23,24 +24,28 @@ public class EnableBabyBase : MonoBehaviour
     void Update()
     {
 
-        if(Input.GetKeyDown("1"))
+        if(Input.GetButton("EnterPositionP1"))
         {
             BabyBase1.SetActive(true);
+            playerCount = 1;
         }
         else
-        if(Input.GetKeyDown("2"))
+        if(Input.GetButton("EnterPositionP2"))
         {
             BabyBase2.SetActive(true);
+            playerCount = 2;
         }
         else
-        if(Input.GetKeyDown("3"))
+        if(Input.GetButton("EnterPositionP3"))
         {
             BabyBase3.SetActive(true);
+            playerCount = 3;
         }
         else
-        if(Input.GetKeyDown("4"))
+        if(Input.GetButton("EnterPositionP4"))
         {          
             BabyBase4.SetActive(true);
+            playerCount = 4;
         }
 
     }
