@@ -6,23 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Baby Drivers Pause Screen.unity
-    guid: fc4ed2a8d7ebd484a971ff22f5c7a931
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Baby Drivers start screen.unity
-    guid: 58e963555628c5244b4858e13a6e21ff
-  - enabled: 1
-    path: Assets/babyMovementWork.unity
-    guid: c7c536672e0cfb0409c556076974cec3
-  - enabled: 1
-    path: Assets/CharacterSelectScreen.unity
-    guid: 0d094acb0f189ed42b8d352b13e23043
-  - enabled: 1
-    path: Assets/PauseScreen.unity
-    guid: e1c061c54f7d7a446a7d60d5a4beb227
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/StartScreen.unity
     guid: 47756b3767979e741a852ca7131370fe
+  - enabled: 1
+    path: Assets/CharacterSelectScreen.unity
+    guid: 0d094acb0f189ed42b8d352b13e23043
+  - enabled: 0
+    path: Assets/babyMovementWork.unity
+    guid: c7c536672e0cfb0409c556076974cec3
+  - enabled: 0
+    path: Assets/PauseScreen.unity
+    guid: e1c061c54f7d7a446a7d60d5a4beb227
   - enabled: 1
     path: Assets/FullTest.unity
     guid: 7f0c924958abbaa4895da35305a8d9ce
