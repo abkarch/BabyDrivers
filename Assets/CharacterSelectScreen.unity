@@ -899,11 +899,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: 2bcc1be51f71246bb9b75994da4b4a53, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 115
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2bcc1be51f71246bb9b75994da4b4a53, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 138
+      value: 186
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2bcc1be51f71246bb9b75994da4b4a53, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1041,6 +1041,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a46ad3c54c4634250bb28d29e4fe24ea, type: 2}
+    - target: {fileID: 9500000, guid: 2bcc1be51f71246bb9b75994da4b4a53, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e2cf68ff4b1ffda45a77f7307dd789b9, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2bcc1be51f71246bb9b75994da4b4a53, type: 3}
   m_IsPrefabParent: 0
@@ -1467,11 +1471,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: 2bcc1be51f71246bb9b75994da4b4a53, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 643
+      value: 645
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2bcc1be51f71246bb9b75994da4b4a53, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 144
+      value: 189
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2bcc1be51f71246bb9b75994da4b4a53, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2002,11 +2006,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: 2bcc1be51f71246bb9b75994da4b4a53, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 289
+      value: 292
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2bcc1be51f71246bb9b75994da4b4a53, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 138
+      value: 185
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2bcc1be51f71246bb9b75994da4b4a53, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2092,6 +2096,10 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 7.1
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 2bcc1be51f71246bb9b75994da4b4a53, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e2cf68ff4b1ffda45a77f7307dd789b9, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2bcc1be51f71246bb9b75994da4b4a53, type: 3}
   m_IsPrefabParent: 0
@@ -2466,6 +2474,20 @@ GameObject:
 GameObject:
   m_PrefabParentObject: {fileID: 100002, guid: 2bcc1be51f71246bb9b75994da4b4a53, type: 3}
   m_PrefabInternal: {fileID: 789783689}
+--- !u!111 &1616921846
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1616921845}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400002, guid: d89ea37480b6d75458aa38843e9688dc, type: 3}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 1
+  m_CullingType: 0
 --- !u!1 &1634674153
 GameObject:
   m_ObjectHideFlags: 0
@@ -2912,11 +2934,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: 2bcc1be51f71246bb9b75994da4b4a53, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 477
+      value: 483
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2bcc1be51f71246bb9b75994da4b4a53, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 138
+      value: 184
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2bcc1be51f71246bb9b75994da4b4a53, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2968,7 +2990,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400118, guid: 2bcc1be51f71246bb9b75994da4b4a53, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.9
+      value: -14.2
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 2bcc1be51f71246bb9b75994da4b4a53, type: 3}
       propertyPath: m_Name
