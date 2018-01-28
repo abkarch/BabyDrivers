@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CarScript : MonoBehaviour {
 
+    public LayerMask layersCanHit;
     public int MAX_HEALTH = 1000;
     public  int HIGH_DAMAGE = 200;
     public  int MEDIUM_DAMAGE = 100;
@@ -63,6 +64,8 @@ public class CarScript : MonoBehaviour {
     // On collision, subtract from health depending on speed.
     void OnCollisionEnter(Collision col)
     {
+        bool isValid = layersCanHit == (layersCanHit | (1 << col.gameObject.layer));
+        if (!isValid) return;
         if (col.gameObject.layer .Equals("Baby"))
             return;
         
