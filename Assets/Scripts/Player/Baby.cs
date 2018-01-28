@@ -77,6 +77,8 @@ public class Baby : MonoBehaviour
         else if (s == "free")
         {
             enablePhysics();
+            anim.SetBool("Steering", false);
+            state = s;
         }
         else if (t != null)
         {
@@ -128,12 +130,12 @@ public class Baby : MonoBehaviour
 
     private IEnumerator tweenBaby(GameObject g, Transform newPos, int i)
     {
-        while (g.transform.position != newPos.transform.position && g.transform.rotation != newPos.transform.rotation)
+        while (!(g.transform.position.AlmostEquals(newPos.transform.position, .01f)) || !(g.transform.rotation.AlmostEquals(newPos.transform.rotation, 1f)))
         {
             g.transform.position = Vector3.Lerp(g.transform.position, newPos.transform.position, Time.deltaTime * i);
             g.transform.rotation = Quaternion.Slerp(g.transform.rotation, newPos.transform.rotation, Time.deltaTime * i);
             yield return null;
-        }
+        };
     }
 
     public void RunSteeringState()

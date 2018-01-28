@@ -10,7 +10,12 @@ public class changeFromPlayerSelectScene : MonoBehaviour {
     public GameObject field3;
     public GameObject field4;
 
-	public void ChangeToScene (string scenetochangeTo) {
+    public GameObject BabyBase1;
+    public GameObject BabyBase2;
+    public GameObject BabyBase3;
+    public GameObject BabyBase4;
+
+    public void ChangeToScene (string scenetochangeTo) {
         string[] names = PlayerNamesData.names;
         
         SaveNameToArray(field1, 1, names);
@@ -21,6 +26,18 @@ public class changeFromPlayerSelectScene : MonoBehaviour {
         Debug.Log(names[0] + names[1] + names[2]  + names[3]);
 
         
+
+        if (BabyBase1.activeSelf)
+            PlayerNamesData.playerCount++;
+        if (BabyBase2.activeSelf)
+            PlayerNamesData.playerCount++;
+        if (BabyBase3.activeSelf)
+            PlayerNamesData.playerCount++;
+        if (BabyBase4.activeSelf)
+            PlayerNamesData.playerCount++;
+
+        Debug.Log("Num of players:" + PlayerNamesData.playerCount);
+
         Application.LoadLevel(scenetochangeTo);		
 	}
 

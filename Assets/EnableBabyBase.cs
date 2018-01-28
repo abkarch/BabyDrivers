@@ -27,26 +27,28 @@ public class EnableBabyBase : MonoBehaviour
         if(Input.GetButton("EnterPositionP1"))
         {
             BabyBase1.SetActive(true);
-            playerCount = 1;
+          
         }
         else
         if(Input.GetButton("EnterPositionP2"))
         {
             BabyBase2.SetActive(true);
-            playerCount = 2;
+            
         }
         else
         if(Input.GetButton("EnterPositionP3"))
         {
             BabyBase3.SetActive(true);
-            playerCount = 3;
+            
         }
         else
         if(Input.GetButton("EnterPositionP4"))
         {          
             BabyBase4.SetActive(true);
-            playerCount = 4;
+            
         }
+        
+        
 
     }
 }
