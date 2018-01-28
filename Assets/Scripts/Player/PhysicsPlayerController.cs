@@ -178,7 +178,7 @@ public class PhysicsPlayerController : MonoBehaviour
 
             if (cameraTransform != null)
             {
-                forward = cameraTransform.TransformDirection(Vector3.up);
+				forward = cameraTransform.forward;// cameraTransform.TransformDirection(Vector3.up);
             }
             else
             {

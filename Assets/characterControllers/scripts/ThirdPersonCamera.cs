@@ -20,6 +20,8 @@ public class ThirdPersonCamera : MonoBehaviour
 	private float _CurrentX = 0f;
 	private float _CurrentY = 0f;
 
+	private Vector3 _Offset = Vector3.up * 0.3f;
+
 	public void Initialize(GameObject inTarget)
 	{
 		_Target = inTarget.transform;
@@ -31,7 +33,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
 	public void UpdateFromInput(float inX, float inY)
 	{
-		Vector3 origin = _Target.position + Vector3.up;
+		Vector3 origin = _Target.position + _Offset;
 		RaycastHit hit;
 
 		// X will wrap
@@ -81,7 +83,7 @@ public class ThirdPersonCamera : MonoBehaviour
 			
 		Vector3 toCam = Quaternion.Euler(_CurrentY, _CurrentX, 0f) * Vector3.forward;
 
-		Vector3 origin = _Target.position + Vector3.up;
+		Vector3 origin = _Target.position + _Offset;
 		RaycastHit hit;
 		if (Physics.SphereCast(origin, Cam.nearClipPlane, toCam, out hit, Distance, ColliderLayer) == true)
 		{
@@ -92,6 +94,6 @@ public class ThirdPersonCamera : MonoBehaviour
 			transform.position = origin + (toCam * Distance);
 		}
 
-		transform.rotation = Quaternion.LookRotation(_Target.position - transform.position, Vector3.up);
+		transform.rotation = Quaternion.LookRotation(origin - transform.position, Vector3.up);
 	}
 }
