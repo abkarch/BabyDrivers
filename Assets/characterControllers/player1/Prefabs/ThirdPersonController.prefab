@@ -79,8 +79,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Cam: {fileID: 4537936929346054}
-  state: 
+  state: free
   anim: {fileID: 0}
+  car: {fileID: 114893507528186488, guid: 81bfca4fa4cd84915862d2ec107f4f70, type: 2}
 --- !u!114 &11469404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -97,7 +98,7 @@ MonoBehaviour:
   m_JumpPower: 25
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.4
-  m_MoveSpeedMultiplier: 1
+  m_MoveSpeedMultiplier: 3
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 0.2999
 --- !u!136 &13615390
@@ -109,8 +110,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 0.94
+  m_Radius: 0.1
+  m_Height: 0.4
   m_Direction: 1
   m_Center: {x: 0, y: 0.45, z: 0}
 --- !u!1001 &100100000
