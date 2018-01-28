@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour {
     public GameObject[] playerPrefabs;
     private SplitScreen ss;
 
+	public GameObject CameraPrefab;
 
     // Make this game object and all its transform children
     // survive when loading a new scene.
@@ -26,7 +27,10 @@ public class PlayerManager : MonoBehaviour {
             GameObject g = GameObject.Instantiate(playerPrefabs[i]);
             g.transform.position = gameObject.transform.position;
             g.transform.parent = gameObject.transform;
-            ss.setCam(i + 1, g.GetComponentInChildren<Camera>());
+			GameObject cam = GameObject.Instantiate(CameraPrefab);
+			ThirdPersonCamera tpc = cam.GetComponent<ThirdPersonCamera>();
+			tpc.Initialize(g);
+			ss.setCam(i + 1, tpc.Cam);
         }
         gameObject.GetComponent<SplitScreen>().NumSplitScreenPanels(numberOfPlayers);
     }
