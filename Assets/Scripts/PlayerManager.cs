@@ -1,6 +1,7 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class PlayerManager : MonoBehaviour {
 
@@ -33,6 +34,7 @@ public class PlayerManager : MonoBehaviour {
             if (b != null)
             {
                 b.SetPlayerNum(i + 1);
+                ChangeColor(b,i+1);
             }
             g.transform.position = gameObject.transform.position;
             g.transform.parent = gameObject.transform;
@@ -56,4 +58,33 @@ public class PlayerManager : MonoBehaviour {
     void Update () {
 		
 	}
+
+    private void ChangeColor(Baby infant,int playerNum)
+    {
+         SkinnedMeshRenderer[] bodyParts = infant.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+        foreach(SkinnedMeshRenderer skin in bodyParts)
+        {
+            //if(skin.) Make diaper and eyes not match color
+            switch (playerNum)
+            {
+                case 1:
+                    Material[] newMat = new Material[] { PlayerNamesData.playerColor1 };
+                    skin.materials = newMat;
+                    break;
+                case 2:
+                    Material[] newMat2 = new Material[] { PlayerNamesData.playerColor1 };
+                    skin.materials = newMat2;
+                    break;
+                case 3:
+                    Material[] newMat3 = new Material[] { PlayerNamesData.playerColor1 };
+                    skin.materials = newMat3;
+                    break;
+                case 4:
+                    Material[] newMat4 = new Material[] { PlayerNamesData.playerColor1 };
+                    skin.materials = newMat4;
+                    break;
+             }
+        }
+    }
+
 }

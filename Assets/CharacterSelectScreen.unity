@@ -509,11 +509,11 @@ MonoBehaviour:
   field2: {fileID: 438662992}
   field3: {fileID: 1750659253}
   field4: {fileID: 1545637683}
-  BabyBase1: {fileID: 0}
-  BabyBase2: {fileID: 0}
-  BabyBase3: {fileID: 0}
-  BabyBase4: {fileID: 0}
-  defaultColor: {fileID: 0}
+  BabyBase1: {fileID: 1616921845}
+  BabyBase2: {fileID: 981809451}
+  BabyBase3: {fileID: 1244013409}
+  BabyBase4: {fileID: 1910648364}
+  defaultColor: {fileID: 2100000, guid: a46ad3c54c4634250bb28d29e4fe24ea, type: 2}
 --- !u!114 &392580021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1028,7 +1028,7 @@ Prefab:
     - target: {fileID: 13700000, guid: 2bcc1be51f71246bb9b75994da4b4a53, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 536d73fdd74709b4fbcc791af7f70f78, type: 2}
+      objectReference: {fileID: 2100000, guid: a46ad3c54c4634250bb28d29e4fe24ea, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2bcc1be51f71246bb9b75994da4b4a53, type: 3}
   m_IsPrefabParent: 0

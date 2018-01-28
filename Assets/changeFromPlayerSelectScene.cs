@@ -19,7 +19,10 @@ public class changeFromPlayerSelectScene : MonoBehaviour {
 
     void Start()
     {
-        PlayerNamesData.playerColor= defaultColor;
+        PlayerNamesData.playerColor1= defaultColor;
+        PlayerNamesData.playerColor2 = defaultColor;
+        PlayerNamesData.playerColor3 = defaultColor;
+        PlayerNamesData.playerColor4 = defaultColor;
     }
 
     public void ChangeToScene (string scenetochangeTo) {
@@ -32,9 +35,13 @@ public class changeFromPlayerSelectScene : MonoBehaviour {
 
         Debug.Log(names[0] + names[1] + names[2]  + names[3]);
 
-        
+        PlayerNamesData.playerColor1 = BabyBase1.GetComponentInChildren<SkinnedMeshRenderer>().materials[0];
+        PlayerNamesData.playerColor2 = BabyBase2.GetComponentInChildren<SkinnedMeshRenderer>().materials[0];
+        PlayerNamesData.playerColor3 = BabyBase3.GetComponentInChildren<SkinnedMeshRenderer>().materials[0];
+        PlayerNamesData.playerColor4 = BabyBase4.GetComponentInChildren<SkinnedMeshRenderer>().materials[0];
 
-        
+
+
         if (BabyBase2.activeSelf)
             PlayerNamesData.playerCount++;
         if (BabyBase3.activeSelf)
