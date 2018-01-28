@@ -23,3 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/StartScreen.unity
     guid: 47756b3767979e741a852ca7131370fe
+  - enabled: 1
+    path: Assets/FullTest.unity
+    guid: 7f0c924958abbaa4895da35305a8d9ce

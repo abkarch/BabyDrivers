@@ -65,5 +65,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd53e0a6ddebbe428e0f6feecf76c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pooledObjectPrefabs: []
+  pooledObjectPrefabs:
+  - pooledObjectName: overlayText
+    pooledObject: {fileID: 114829390545144612, guid: 4c40cd2ad5874644d8bdf0189caaa683,
+      type: 2}
+    countToPool: 4
+    layerOverride: 0
   tickingObjects: []

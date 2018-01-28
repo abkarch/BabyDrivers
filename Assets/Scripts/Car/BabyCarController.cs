@@ -71,6 +71,7 @@ public class BabyCarController : MonoBehaviour
         m_Wheels[0].ConfigureVehicleSubsteps(criticalSpeed, stepsBelow, stepsAbove);
 
         float angle = GetTurningAngle();
+
         float torque = GetTorqueValue();
         float handBrake = GetBrakingValue();
 

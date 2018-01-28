@@ -11,26 +11,26 @@ public class changeFromPlayerSelectScene : MonoBehaviour {
     public GameObject field4;
 
 	public void ChangeToScene (string scenetochangeTo) {
-        PlayerNames names = new PlayerNames();
+        string[] names = PlayerNamesData.names;
         
         SaveNameToArray(field1, 1, names);
         SaveNameToArray(field2, 2, names);
         SaveNameToArray(field3, 3, names);
         SaveNameToArray(field4, 4, names);
 
-        Debug.Log(names.names[0] + names.names[1] + names.names[2]  + names.names[3]);
+        Debug.Log(names[0] + names[1] + names[2]  + names[3]);
 
         
         Application.LoadLevel(scenetochangeTo);		
 	}
 
-    private void SaveNameToArray(GameObject field, int playerNumber,PlayerNames names)
+    private void SaveNameToArray(GameObject field, int playerNumber,string[] names)
     {
         string input = field.GetComponent<InputField>().text;
 
         if (input.Length > 0)
-            names.names[playerNumber-1] = input;
+           names[playerNumber-1] = input;
         else
-            names.names[playerNumber -1] = "Player " + playerNumber;
+            names[playerNumber -1] = "Player " + playerNumber;
     }
 }
