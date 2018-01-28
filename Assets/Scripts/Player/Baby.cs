@@ -121,6 +121,7 @@ public class Baby : MonoBehaviour
             playerController.lockControl();
         }
         objRigidbody.isKinematic = true;
+        gameObject.GetComponent<CapsuleCollider>().enabled = false;
     }
 
     public void enablePhysics()
@@ -130,11 +131,12 @@ public class Baby : MonoBehaviour
             playerController.unlockControl();
         }
         objRigidbody.isKinematic = false;
+        gameObject.GetComponent<CapsuleCollider>().enabled = true;
     }
 
     private IEnumerator tweenBaby(GameObject g, Transform newPos, int i)
     {
-        while (!(g.transform.position.AlmostEquals(newPos.transform.position, .01f)) && g.transform.rotation != (newPos.transform.rotation))
+        while (!(g.transform.position.AlmostEquals(newPos.transform.position, .01f)) || g.transform.rotation != (newPos.transform.rotation))
         {
             g.transform.position = Vector3.Lerp(g.transform.position, newPos.transform.position, Time.deltaTime * i);
             g.transform.rotation = Quaternion.Slerp(g.transform.rotation, newPos.transform.rotation, Time.deltaTime * i);
@@ -166,10 +168,14 @@ public class Baby : MonoBehaviour
     }
 
     public void RunPedalingState() {
-      //  gameObject.transform.parent = car.gameObject.transform;
-        anim.SetFloat("gas", Input.GetAxis("Interact1P1"));
-        anim.SetFloat("brake", Input.GetAxis("Interact2P1"));
+        float gasIn = Input.GetAxis("Interact1P" + playerNum);
+        float brakeIn = Input.GetAxis("Interact2P" + playerNum);
+        anim.SetFloat("gas", Mathf.Lerp(anim.GetFloat("gas"), gasIn, 5 * Time.deltaTime));
+        anim.SetFloat("brake", Mathf.Lerp(anim.GetFloat("brake"), brakeIn, 5 * Time.deltaTime));
         anim.SetFloat("idle", 1.0f);
+
+        car.gasPedal.PedalValue = gasIn;
+        car.brakePedal.PedalValue = brakeIn;
     }
 }
 

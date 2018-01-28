@@ -501,6 +501,36 @@ Transform:
   m_PrefabParentObject: {fileID: 4426708612955452, guid: 62eacc9e1a1d944bcbf34987522c73da,
     type: 2}
   m_PrefabInternal: {fileID: 257463604}
+--- !u!1 &341844460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1553108008210682, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 341844461}
+  m_Layer: 9
+  m_Name: BrakePedalOriginalPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &341844461
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4583245994255072, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 341844460}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.098220795, y: 0.022417104, z: 0.08855014}
+  m_LocalScale: {x: 0.011, y: 0.011, z: 0.011}
+  m_Children: []
+  m_Father: {fileID: 1102345624}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &411312704
 Prefab:
   m_ObjectHideFlags: 0
@@ -908,6 +938,36 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: d1e198bd0db2eac45ab42f979a541e83, type: 2}
   m_PrefabInternal: {fileID: 482310250}
+--- !u!1 &487813956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1829538163282212, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 487813957}
+  m_Layer: 9
+  m_Name: gasPedalOriginaPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &487813957
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4044625450044864, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 487813956}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.14164735, y: 0.022417104, z: 0.08855014}
+  m_LocalScale: {x: 0.011, y: 0.011, z: 0.011}
+  m_Children: []
+  m_Father: {fileID: 1102345624}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &505705489
 Prefab:
   m_ObjectHideFlags: 0
@@ -1322,6 +1382,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &642754613 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114542895213403044, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+    type: 2}
+  m_PrefabInternal: {fileID: 1836081344}
+  m_Script: {fileID: 11500000, guid: c47a51f4bf5f2ed4aa61ab0d2ad5451e, type: 3}
 --- !u!1001 &645776526
 Prefab:
   m_ObjectHideFlags: 0
@@ -1991,6 +2057,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4426708612955452, guid: 62eacc9e1a1d944bcbf34987522c73da,
     type: 2}
   m_PrefabInternal: {fileID: 819659011}
+--- !u!114 &830484742 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114667249025049398, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+    type: 2}
+  m_PrefabInternal: {fileID: 1836081344}
+  m_Script: {fileID: 11500000, guid: c47a51f4bf5f2ed4aa61ab0d2ad5451e, type: 3}
 --- !u!1001 &834229310
 Prefab:
   m_ObjectHideFlags: 0
@@ -2883,6 +2955,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4474435707770146, guid: f5ce8e3225a24488eaaaa2c774d2d6e5,
     type: 2}
   m_PrefabInternal: {fileID: 1095733897}
+--- !u!4 &1102345624 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4244207736342382, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+    type: 2}
+  m_PrefabInternal: {fileID: 1836081344}
 --- !u!1001 &1121551055
 Prefab:
   m_ObjectHideFlags: 0
@@ -5454,12 +5531,12 @@ Prefab:
     - target: {fileID: 146823074843876408, guid: 81bfca4fa4cd84915862d2ec107f4f70,
         type: 2}
       propertyPath: m_SuspensionSpring.damper
-      value: 4290.215
+      value: 4290.2144
       objectReference: {fileID: 0}
     - target: {fileID: 146823074843876408, guid: 81bfca4fa4cd84915862d2ec107f4f70,
         type: 2}
       propertyPath: m_SuspensionDistance
-      value: 0.1962
+      value: 0.19620003
       objectReference: {fileID: 0}
     - target: {fileID: 146823074843876408, guid: 81bfca4fa4cd84915862d2ec107f4f70,
         type: 2}
@@ -5490,6 +5567,115 @@ Prefab:
         type: 2}
       propertyPath: m_ForceAppPointDistance
       value: 1.6543777
+      objectReference: {fileID: 0}
+    - target: {fileID: 146705339538656970, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+        type: 2}
+      propertyPath: m_SuspensionSpring.spring
+      value: 26813.844
+      objectReference: {fileID: 0}
+    - target: {fileID: 146705339538656970, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+        type: 2}
+      propertyPath: m_SuspensionSpring.damper
+      value: 4290.2153
+      objectReference: {fileID: 0}
+    - target: {fileID: 146823074843876408, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+        type: 2}
+      propertyPath: m_SuspensionSpring.spring
+      value: 26813.838
+      objectReference: {fileID: 0}
+    - target: {fileID: 146361284295995498, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+        type: 2}
+      propertyPath: m_SuspensionDistance
+      value: 0.19619998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4766841706343458, guid: 81bfca4fa4cd84915862d2ec107f4f70, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.1622
+      objectReference: {fileID: 0}
+    - target: {fileID: 4766841706343458, guid: 81bfca4fa4cd84915862d2ec107f4f70, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.052
+      objectReference: {fileID: 0}
+    - target: {fileID: 4766841706343458, guid: 81bfca4fa4cd84915862d2ec107f4f70, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.2033
+      objectReference: {fileID: 0}
+    - target: {fileID: 114893507528186488, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+        type: 2}
+      propertyPath: gasPedal
+      value: 
+      objectReference: {fileID: 830484742}
+    - target: {fileID: 114893507528186488, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+        type: 2}
+      propertyPath: brakePedal
+      value: 
+      objectReference: {fileID: 642754613}
+    - target: {fileID: 114667249025049398, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+        type: 2}
+      propertyPath: depthMarker
+      value: 
+      objectReference: {fileID: 2021481957}
+    - target: {fileID: 114542895213403044, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+        type: 2}
+      propertyPath: depthMarker
+      value: 
+      objectReference: {fileID: 1893880907}
+    - target: {fileID: 4310549560046580, guid: 81bfca4fa4cd84915862d2ec107f4f70, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.1416474
+      objectReference: {fileID: 0}
+    - target: {fileID: 4310549560046580, guid: 81bfca4fa4cd84915862d2ec107f4f70, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.15546
+      objectReference: {fileID: 0}
+    - target: {fileID: 114667249025049398, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+        type: 2}
+      propertyPath: pedalResetRate
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114667249025049398, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+        type: 2}
+      propertyPath: pedalPushRate
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114667249025049398, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+        type: 2}
+      propertyPath: originalPosition
+      value: 
+      objectReference: {fileID: 487813957}
+    - target: {fileID: 1002099595499286, guid: 81bfca4fa4cd84915862d2ec107f4f70, type: 2}
+      propertyPath: m_Name
+      value: depthToPushGasTo
+      objectReference: {fileID: 0}
+    - target: {fileID: 114542895213403044, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+        type: 2}
+      propertyPath: originalPosition
+      value: 
+      objectReference: {fileID: 341844461}
+    - target: {fileID: 114542895213403044, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+        type: 2}
+      propertyPath: pedalResetRate
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114542895213403044, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+        type: 2}
+      propertyPath: pedalPushRate
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4618498652191398, guid: 81bfca4fa4cd84915862d2ec107f4f70, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.0084
+      objectReference: {fileID: 0}
+    - target: {fileID: 114893507528186488, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+        type: 2}
+      propertyPath: wheelShape
+      value: 
+      objectReference: {fileID: 1000010734295496, guid: 8a4e2f69ac0ecf242a1b727a7c204359,
+        type: 2}
+    - target: {fileID: 114893507528186488, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+        type: 2}
+      propertyPath: brakeTorque
+      value: 60000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 81bfca4fa4cd84915862d2ec107f4f70, type: 2}
@@ -5670,6 +5856,36 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: d1e198bd0db2eac45ab42f979a541e83, type: 2}
   m_PrefabInternal: {fileID: 1890808318}
+--- !u!1 &1893880906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1002099595499286, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1893880907}
+  m_Layer: 9
+  m_Name: depthToPushBrakeTo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1893880907
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4310549560046580, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1893880906}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0982208, y: 0.022417104, z: 0.173}
+  m_LocalScale: {x: 0.011, y: 0.011, z: 0.011}
+  m_Children: []
+  m_Father: {fileID: 1102345624}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1902331285
 Prefab:
   m_ObjectHideFlags: 0
@@ -5975,6 +6191,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4840761325958692, guid: 38a4cc583e1f84417b4c11887cbdaee9,
     type: 2}
   m_PrefabInternal: {fileID: 2020577837}
+--- !u!4 &2021481957 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4310549560046580, guid: 81bfca4fa4cd84915862d2ec107f4f70,
+    type: 2}
+  m_PrefabInternal: {fileID: 1836081344}
 --- !u!1001 &2030550214
 Prefab:
   m_ObjectHideFlags: 0
