@@ -17,11 +17,13 @@ public class PlayerManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        
         ss = GetComponent<SplitScreen>();
         startMatch();
     }
 
     public void startMatch() {
+        numberOfPlayers = PlayerNamesData.playerCount;
         for (int i = 0; i < numberOfPlayers; i++) {
             GameObject g = GameObject.Instantiate(playerPrefabs[i]);
             Baby b = g.GetComponent<Baby>();

@@ -10,14 +10,21 @@ public class PlayerNames : MonoBehaviour {
     public Transform namePlate3;
     public Transform namePlate4;
 
-    public Transform player1Cam;
-    public Transform player2Cam;
-    public Transform player3Cam;
-    public Transform player4Cam;
+    public static Transform player1Cam;
+    public static Transform player2Cam;
+    public static Transform player3Cam;
+    public static Transform player4Cam;
 
     void Start()
     {
+        namePlate1.GetComponent<TextMesh>().text = PlayerNamesData.names[0];
+        namePlate2.GetComponent<TextMesh>().text = PlayerNamesData.names[1];
+        namePlate3.GetComponent<TextMesh>().text = PlayerNamesData.names[2];
+        namePlate4.GetComponent<TextMesh>().text = PlayerNamesData.names[3];
 
+        //assign player cams
+
+        
     }
 
     void Update ()

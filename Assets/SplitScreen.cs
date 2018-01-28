@@ -59,15 +59,20 @@ public class SplitScreen : MonoBehaviour {
                 }
     }
 
+    
     public void setCam(int camNumber, Camera c) {
         if(camNumber == 1) {
             cam1 = c;
+            PlayerNames.player1Cam = c.transform;
         } else if (camNumber == 2) {
             cam2 = c;
+            PlayerNames.player2Cam = c.transform;
         } else if (camNumber == 3) {
             cam3 = c;
+            PlayerNames.player3Cam = c.transform;
         } else {
             cam4 = c;
+            PlayerNames.player4Cam = c.transform;
         }
     }
 	
