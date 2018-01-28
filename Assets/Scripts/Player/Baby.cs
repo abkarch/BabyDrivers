@@ -93,6 +93,7 @@ public class Baby : MonoBehaviour
             enablePhysics();
             anim.SetBool("Steering", false);
             anim.SetBool("Pedaling", false);
+            anim.SetBool("Shifting", false);
             state = s;
             zoneActingIn = null;            
         }
@@ -100,6 +101,7 @@ public class Baby : MonoBehaviour
         {
             anim.SetBool("Steering", false);
             anim.SetBool("Pedaling", false);
+            anim.SetBool("Shifting", false);
             state = s;
             StartCoroutine(tweenBabyToFreeState(gameObject, zoneActingIn.exitToPosition, 15));
         }
