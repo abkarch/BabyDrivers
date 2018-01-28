@@ -17,9 +17,12 @@ public class CarPedal : MonoBehaviour
         get {
             return pedalValue;
         } set {
-            if (value == 0) {
+            if (value == 0)
+            {
+                pedalValue = 0;
                 resetPedal();
-            } else {
+            }
+            else {
                 pedalValue = Mathf.Clamp01(value);
                 pushPedal();
             }
@@ -28,7 +31,7 @@ public class CarPedal : MonoBehaviour
     
     public void pushPedal()
     {
-        Debug.Log(PedalValue);
+        Debug.Log("Pedal value: " + PedalValue);
         Vector3 t = depthMarker.transform.position - gameObject.transform.position;
         t *= PedalValue;
         transform.position = Vector3.Lerp(gameObject.transform.position, depthMarker.transform.position, Time.deltaTime * pedalPushRate);
