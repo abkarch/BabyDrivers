@@ -11,6 +11,7 @@ public class Baby : MonoBehaviour
     public Animator anim;
     public BabyCarController car;
     public bool canShiftChange;
+	public AudioSource Audio;
 
     triggerZone zoneIn = null;
     triggerZone zoneActingIn = null;
@@ -237,5 +238,14 @@ public class Baby : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         canShiftChange = true;
     }
+
+	public void PlaySoundClip(AudioClip inSound)
+	{
+		if (Audio != null && inSound != null)
+		{
+			Audio.clip = inSound;
+			Audio.Play();
+		}
+	}
 }
 

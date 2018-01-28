@@ -10,12 +10,17 @@ public class triggerZone : MonoBehaviour {
     public bool occupied;
     Baby babyUsing = null;
 
+	public AudioClip EnterSound;
+	public AudioClip LeaveSound;
+
     public void StartUsing(Baby b)
     {
         if (occupied) return;
         babyUsing = b;
         occupied = false;
         babyUsing.setState(newStateOfBaby, this);
+
+		babyUsing.PlaySoundClip(EnterSound);
     }
 
     public void LeaveState()
@@ -28,6 +33,9 @@ public class triggerZone : MonoBehaviour {
         {
             babyUsing.setState("free", null);
         }
+
+		babyUsing.PlaySoundClip(LeaveSound);
+
         babyUsing = null;
         occupied = false;
     }
