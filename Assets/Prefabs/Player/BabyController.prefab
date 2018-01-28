@@ -1864,7 +1864,7 @@ MonoBehaviour:
   autoAimMaxAngleOffset: 10
   jumpVelocity: 5
   jumpCooldown: 0.2
-  camSpeed: 4
+  camSpeed: 200
 --- !u!136 &136676066174367838
 CapsuleCollider:
   m_ObjectHideFlags: 1
