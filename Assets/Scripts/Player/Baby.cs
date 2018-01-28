@@ -54,6 +54,8 @@ public class Baby : MonoBehaviour
             else if (state == "Steering")
             {
                 RunSteeringState();
+            } else if (state == "Pedaling") {
+                RunPedalingState();
             }
         }
     }
@@ -78,12 +80,15 @@ public class Baby : MonoBehaviour
         {
             enablePhysics();
             anim.SetBool("Steering", false);
+            anim.SetBool("Pedaling", false);
             state = s;
+            
         }
         else if (t != null)
         {
             disablePhysics();
             state = s;
+            gameObject.transform.parent = car.gameObject.transform;
             StartCoroutine(tweenBaby(this.gameObject, t.babyLocation, 15));
             
             Debug.Log("Setting bool: " + s);
@@ -129,7 +134,7 @@ public class Baby : MonoBehaviour
 
     private IEnumerator tweenBaby(GameObject g, Transform newPos, int i)
     {
-        while (!(g.transform.position.AlmostEquals(newPos.transform.position, .01f)) && !(g.transform.rotation.AlmostEquals(newPos.transform.rotation, 1f)))
+        while (!(g.transform.position.AlmostEquals(newPos.transform.position, .01f)) && g.transform.rotation != (newPos.transform.rotation))
         {
             g.transform.position = Vector3.Lerp(g.transform.position, newPos.transform.position, Time.deltaTime * i);
             g.transform.rotation = Quaternion.Slerp(g.transform.rotation, newPos.transform.rotation, Time.deltaTime * i);
@@ -139,7 +144,7 @@ public class Baby : MonoBehaviour
 
     public void RunSteeringState()
     {
-        gameObject.transform.parent = car.gameObject.transform;
+
         float turn = Input.GetAxis("HorizontalP" + playerNum);
         anim.SetFloat("Turn", 01.5f * -turn, 0.1f, Time.deltaTime);
         if (turn < 0)
@@ -158,6 +163,13 @@ public class Baby : MonoBehaviour
             car.steeringWheel.RotateWheelBackToZero();
         }
 
+    }
+
+    public void RunPedalingState() {
+      //  gameObject.transform.parent = car.gameObject.transform;
+        anim.SetFloat("gas", Input.GetAxis("Interact1P1"));
+        anim.SetFloat("brake", Input.GetAxis("Interact2P1"));
+        anim.SetFloat("idle", 1.0f);
     }
 }
 
