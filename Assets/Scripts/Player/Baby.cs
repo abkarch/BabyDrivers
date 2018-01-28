@@ -11,6 +11,8 @@ public class Baby : MonoBehaviour
     public Animator anim;
     public BabyCarController car;
 
+    triggerZone zoneIn = null;
+
     private void Start()
     {
         state = "free";
@@ -33,9 +35,26 @@ public class Baby : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (state == "Steering")
+        if (state == "free")
         {
-            RunSteeringState();
+            if (zoneIn != null)
+            {
+                if (Input.GetButtonDown("EnterPositionP" + playerNum))
+                {
+                    setState(zoneIn.newStateOfBaby, zoneIn);
+                }
+            }
+        }
+        else
+        {
+            if (Input.GetButtonDown("LeavePositionP" + playerNum))
+            {
+                setState("free", null);
+            }
+            else if (state == "Steering")
+            {
+                RunSteeringState();
+            }
         }
     }
 
@@ -48,7 +67,7 @@ public class Baby : MonoBehaviour
         }
         playerController.SetPlayerNum(num);
     }
-    
+
     public void setState(string s, triggerZone t)
     {
         if (s == state)
@@ -62,21 +81,28 @@ public class Baby : MonoBehaviour
         else if (t != null)
         {
             disablePhysics();
-            StartCoroutine(tweenBaby(this.gameObject, t.babyLocation));
+            state = s;
+            StartCoroutine(tweenBaby(this.gameObject, t.babyLocation, 10));
+            Debug.Log("Setting bool: " + s);
             anim.SetBool(s, true);
         }
     }
 
-    public void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        triggerZone t = null;
-        if ((t = other.GetComponent<triggerZone>()) != null && state == "free" && Input.GetButtonDown("EnterPositionP" + playerNum))
+        triggerZone t = other.GetComponent<triggerZone>();
+        if (t != null)
         {
-            setState(t.newStateOfBaby, t);
+            zoneIn = t;
         }
-        else if (state != "free" && Input.GetButtonDown("LeavePositionP" + playerNum))
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        triggerZone t = other.GetComponent<triggerZone>();
+        if (t == zoneIn)
         {
-            setState("free", null);
+            zoneIn = null;
         }
     }
 
@@ -100,12 +126,12 @@ public class Baby : MonoBehaviour
         objRigidbody.useGravity = true;
     }
 
-    private IEnumerator tweenBaby(GameObject g, Transform newPos)
+    private IEnumerator tweenBaby(GameObject g, Transform newPos, int i)
     {
         while (g.transform.position != newPos.transform.position && g.transform.rotation != newPos.transform.rotation)
         {
-            g.transform.position = Vector3.Lerp(g.transform.position, newPos.transform.position, Time.deltaTime);
-            g.transform.Rotate(Vector3.Lerp(g.transform.rotation.eulerAngles, newPos.transform.rotation.eulerAngles, Time.deltaTime));
+            g.transform.position = Vector3.Lerp(g.transform.position, newPos.transform.position, Time.deltaTime * i);
+            g.transform.rotation = Quaternion.Slerp(g.transform.rotation, newPos.transform.rotation, Time.deltaTime * i);
             yield return null;
         }
     }
