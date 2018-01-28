@@ -689,7 +689,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: babyMovementWork
+          m_StringArgument: FullTest
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -761,6 +761,7 @@ GameObject:
   - component: {fileID: 1664643660}
   - component: {fileID: 1664643659}
   - component: {fileID: 1664643662}
+  - component: {fileID: 1664643663}
   m_Layer: 5
   m_Name: Resume
   m_TagString: Untagged
@@ -826,7 +827,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1664643662}
+      - m_Target: {fileID: 1664643663}
         m_MethodName: ChangeToScene
         m_Mode: 5
         m_Arguments:
@@ -834,7 +835,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: FullTest
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -881,6 +882,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbe5bbb07059d5b42ace8c18ec878396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1664643663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1664643657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc9650b8f34bcf4690587738dcd166c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1688291451
