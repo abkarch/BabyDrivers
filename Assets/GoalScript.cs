@@ -13,7 +13,7 @@ public class GoalScript : MonoBehaviour {
         // Does a non-car object need to collide with the goal?
         private bool deliver;
         // The non-car object that needs to collide with the goal
-        private GameObject deliveredObject;
+        private Rigidbody deliveredObject;
         // Does the car need to destroy the goal?
         private bool destroy;
         // Amount of health the goal has
@@ -28,13 +28,14 @@ public class GoalScript : MonoBehaviour {
         private float timerLength;
         // Whether the goal has ended or not
         private bool goalEnd;
-
-        private Rigidbody carBody = BabyCarController.instance.carRigidbody;
+        // body of the car
+        private Rigidbody carBody;
         
         public Goal()
         {
             time = false;
             goalEnd = false;
+            carBody = BabyCarController.instance.carRigidbody;
         }
 
         // The goal is to park.
@@ -64,7 +65,7 @@ public class GoalScript : MonoBehaviour {
         }
 
         // the goal is to deliver
-        public void setDeliver(GameObject obj)
+        public void setDeliver(Rigidbody obj)
         {
             park = false;
             collide = false;
@@ -96,54 +97,44 @@ public class GoalScript : MonoBehaviour {
             this.timerLength = timerLength;
         }
 
-        void OnCollisionEnter(Collision col)
+        // Is the goal to park?
+        public bool getPark()
         {
-            if(park)
-            {
-                // car must collide on goal while stopped
-                if (col.rigidbody == carBody && carBody.velocity.magnitude == 0.0)
-                {
-                    completeGoal();
-                }
-            } else if (collide)
-            {
-                // car must collide with goal
-                if (col.rigidbody == carBody)
-                {
-                    completeGoal();
-                }
-            } else if (deliver)
-            {
-                // object to be delivered must collide with goal
-                if (col.gameObject == deliveredObject)
-                {
-                    completeGoal();
-                }
-            } else if (destroy)
-            {
-                // if collision is fast enough, cause damage
-                if (col.rigidbody.velocity.magnitude > minDmgSpeed)
-                {
-                    health -= damage;
-                }
-                // goal completes when health runs out
-                if (health <= 0)
-                {
-                    completeGoal();
-                }
-            } else
-            {
-            }
+            return park;
+        }
+
+        //is the goal to collide?
+        public bool getCollide()
+        {
+            return collide;
+        }
+
+        // the goal is to deliver
+        public bool getDeliver()
+        {
+            return deliver;
+        }
+
+        // the goal is to destroy
+        public bool getDestroy()
+        {
+            return destroy;
+        }
+
+        // The goal must be completed before the time runs out
+        public bool getTimer()
+        {
+            return time;
         }
 
         // complete this goal
-        void completeGoal()
+        public void completeGoal()
         {
             goalEnd = true;
         }
 
         // fail this goal
-        void failGoal()
+        public void failGoal()
         {
             goalEnd = true;
         }
@@ -167,10 +158,28 @@ public class GoalScript : MonoBehaviour {
             return goalEnd;
         }
 
-        // is goal timed?
-        public bool timed()
+        public Rigidbody getCarBody()
         {
-            return time;
+            return carBody;
+        }
+
+        public Rigidbody getDeliveredObject()
+        {
+            return deliveredObject;
+        }
+
+        public void Damage(Collision col)
+        {
+            // if collision is fast enough, cause damage
+            if (col.rigidbody.velocity.magnitude > minDmgSpeed)
+            {
+                health -= damage;
+            }
+            // goal completes when health runs out
+            if (health <= 0)
+            {
+                completeGoal();
+            }
         }
 
     }
@@ -180,9 +189,13 @@ public class GoalScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        list[0] = new Goal();
         list[0].setCollide();
+        list[1] = new Goal();
         list[1].setPark();
-        list[2].setDeliver(null);
+        list[2] = new Goal();
+        list[2].setDeliver(list[2].getCarBody());
+        list[3] = new Goal();
         list[3].setDestroy(1000, 0.0F, 100);
         iterator = 0;
 	}
@@ -193,9 +206,47 @@ public class GoalScript : MonoBehaviour {
         {
             iterator++;
         }
-        if(list[iterator].timed())
+        if(list[iterator].getTimer())
         {
             list[iterator].UpdateTime(Time.deltaTime);
         }
 	}
+
+    void OnCollisionEnter(Collision col)
+    {
+        Goal goal = list[iterator];
+        Rigidbody carBody = goal.getCarBody();
+        Rigidbody deliveredObject = goal.getDeliveredObject();
+        if (goal.getPark())
+        {
+            // car must collide on goal while stopped
+            if (col.rigidbody == carBody && carBody.velocity.magnitude <= 0.2)
+            {
+                goal.completeGoal();
+            }
+        }
+        else if (goal.getCollide())
+        {
+            // car must collide with goal
+            if (col.rigidbody == carBody)
+            {
+                goal.completeGoal();
+            }
+        }
+        else if (goal.getDeliver())
+        {
+            // object to be delivered must collide with goal
+            if (col.rigidbody == deliveredObject)
+            {
+                goal.completeGoal();
+            }
+        }
+        else if (goal.getDestroy())
+        {
+            goal.Damage(col);
+        }
+        else
+        {
+        }
+    }
 }

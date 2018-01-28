@@ -283,14 +283,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CarScript.cs" />
+    <Compile Include="Assets\changeFromPlayerSelectScene.cs" />
     <Compile Include="Assets\changeScene.cs" />
     <Compile Include="Assets\characterControllers\player1\Scripts\UserControlP1.cs" />
     <Compile Include="Assets\characterControllers\player2\Scripts\UserControlP2.cs" />
     <Compile Include="Assets\characterControllers\player3\Scripts\UserControlP3.cs" />
     <Compile Include="Assets\characterControllers\player4\Scripts\UserControlP4.cs" />
+    <Compile Include="Assets\characterControllers\scripts\ThirdPersonCamera.cs" />
     <Compile Include="Assets\characterControllers\scripts\ThirdPersonCharacter.cs" />
+    <Compile Include="Assets\EnableBabyBase.cs" />
+    <Compile Include="Assets\Fx Explosion Pack\Script\csLightControl.cs" />
+    <Compile Include="Assets\Fx Explosion Pack\Script\DestroyEffect.cs" />
+    <Compile Include="Assets\Fx Explosion Pack\Script\Explosions.cs" />
     <Compile Include="Assets\GoalScript.cs" />
+    <Compile Include="Assets\New Folder\PlayerNames.cs" />
     <Compile Include="Assets\Player Name Assignment.cs" />
+    <Compile Include="Assets\PlayerNamesData.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
@@ -342,12 +350,23 @@
     <Compile Include="Assets\Scripts\Car\BabyCarController.cs" />
     <Compile Include="Assets\Scripts\Car\CarController.cs" />
     <Compile Include="Assets\Scripts\Car\CarPedal.cs" />
+    <Compile Include="Assets\Scripts\Car\GearShift.cs" />
+    <Compile Include="Assets\Scripts\Car\ManualTransmission.cs" />
     <Compile Include="Assets\Scripts\Car\SteeringWheel.cs" />
+    <Compile Include="Assets\Scripts\Car\triggerZone.cs" />
     <Compile Include="Assets\Scripts\CarSwitcher.cs" />
     <Compile Include="Assets\Scripts\DriftCamera.cs" />
     <Compile Include="Assets\Scripts\EasySuspension.cs" />
     <Compile Include="Assets\Scripts\GraphOverlay.cs" />
+    <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\OverlayManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\PoolManager.cs" />
+    <Compile Include="Assets\Scripts\Misc\CoolFunctions.cs" />
+    <Compile Include="Assets\Scripts\Misc\PooledObject.cs" />
+    <Compile Include="Assets\Scripts\Player\Baby.cs" />
+    <Compile Include="Assets\Scripts\Player\PhysicsPlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerManager.cs" />
+    <Compile Include="Assets\Scripts\UI\OverlayElement.cs" />
     <Compile Include="Assets\Scripts\WheelDrive.cs" />
     <Compile Include="Assets\SplitScreen.cs" />
   </ItemGroup>
@@ -394,6 +413,7 @@
     <None Include="Assets\PostProcessing\Resources\Shaders\Uber.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
     <None Include="Assets\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
+    <None Include="Assets\Shaders\UnlitAlphaBlend.shader" />
     <None Include="Assets\characterControllers\player1\ThirdPersonCharacterGuidelines.txt" />
     <None Include="Assets\characterControllers\player2\ThirdPersonCharacterGuidelines.txt" />
     <None Include="Assets\characterControllers\player3\ThirdPersonCharacterGuidelines.txt" />
