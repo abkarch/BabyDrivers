@@ -1857,7 +1857,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1791502626397126}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 0, z: -0.374}
+  m_LocalPosition: {x: -0.01, y: -0.035, z: -0.333}
   m_LocalScale: {x: 0.90909094, y: 0.90909094, z: 0.90909094}
   m_Children: []
   m_Father: {fileID: 4427715320357248}
@@ -2646,7 +2646,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1472864744018948}
   m_LocalRotation: {x: -9.313226e-10, y: -1.4551915e-11, z: 4.1836756e-11, w: -1}
-  m_LocalPosition: {x: 0.051814795, y: 0.037, z: -0.394}
+  m_LocalPosition: {x: 0.051814795, y: -0.008, z: -0.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4244207736342382}
@@ -4297,7 +4297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   babyLocation: {fileID: 4486376315078282}
-  exitToPosition: {fileID: 0}
+  exitToPosition: {fileID: 4766841706343458}
   newStateOfBaby: Pedaling
   occupied: 0
   EnterSound: {fileID: 8300000, guid: 43fe61dcd1cae4b8686d7ef4439dcc7e, type: 3}
@@ -4468,7 +4468,7 @@ CapsuleCollider:
   m_Radius: 0.4
   m_Height: 0.5
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: -0.15}
 --- !u!136 &136362077585922814
 CapsuleCollider:
   m_ObjectHideFlags: 1

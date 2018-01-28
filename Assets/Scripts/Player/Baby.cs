@@ -168,10 +168,9 @@ public class Baby : MonoBehaviour
 
     private IEnumerator tweenBabyToFreeState(GameObject g, Transform newPos, float rate)
     {
-        while (!(g.transform.position.AlmostEquals(newPos.transform.position, .05f)) || g.transform.rotation != (newPos.transform.rotation))
+        while (!(g.transform.position.AlmostEquals(newPos.transform.position, .05f)))
         {
             g.transform.position = Vector3.Lerp(g.transform.position, newPos.transform.position, Time.deltaTime * rate);
-            g.transform.rotation = Quaternion.Slerp(g.transform.rotation, newPos.transform.rotation, Time.deltaTime * rate);
             yield return null;
         };
         setState("free", null);
