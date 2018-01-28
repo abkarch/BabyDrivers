@@ -34,6 +34,7 @@ public class PhysicsPlayerController : MonoBehaviour
 
     private float h;
     private float v;
+    private bool wantsToJump = false;
 
     private bool isMoving;
     public bool IsMoving { get { return isMoving; } }
@@ -81,6 +82,10 @@ public class PhysicsPlayerController : MonoBehaviour
         
         h = Input.GetAxis("HorizontalP" + playerNum);
         v = Input.GetAxis("VerticalP" + playerNum);
+        if (!wantsToJump)
+        {
+            wantsToJump = Input.GetButtonDown("JumpP" + playerNum);
+        }
 
         isMoving = Mathf.Abs(h) > 0.1 || Mathf.Abs(v) > 0.1;
 
@@ -123,11 +128,11 @@ public class PhysicsPlayerController : MonoBehaviour
         CalculateIsGrounded();
         if (isGrounded)
         {
-            if (Input.GetButtonDown("JumpP" + playerNum))
+            if (wantsToJump)
             {
                 if (timeToNextJump <= 0)
                 {
-                    myRigidbody.velocity = new Vector3(0, jumpVelocity, 0);
+                    myRigidbody.velocity = new Vector3(myRigidbody.velocity.x, jumpVelocity, myRigidbody.velocity.z);
                     timeToNextJump = jumpCooldown;
                     isGrounded = false;
                 }
@@ -142,6 +147,7 @@ public class PhysicsPlayerController : MonoBehaviour
             anim.SetFloat("Jump", 0);
         }
         anim.SetBool("OnGround", isGrounded);
+        wantsToJump = false;
     }
 
     void MovementManagement(float horizontal, float vertical)
