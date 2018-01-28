@@ -7,7 +7,7 @@ public class PlayerManager : MonoBehaviour {
 
     public int numberOfPlayers;
     public GameObject playerPrefab;
-    private SplitScreen ss;
+    public SplitScreen ss;
     public Material defaultColor;
 
 	public GameObject CameraPrefab;

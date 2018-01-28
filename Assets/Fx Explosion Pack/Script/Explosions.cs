@@ -18,15 +18,11 @@ public class Explosions : MonoBehaviour
     }
     public void SetOffExplosions()
     {
+        Debug.Log("kaboom");
         explosions.Play(true);
         explosionSound.Play(0);
         babyScream.Play(0);
        
     }
-	void Update () {
-        if (Input.GetKeyDown("space"))
-            SetOffExplosions();
-        if (Input.GetKeyDown("b"))
-            LowHealthFire();
-	}
+	
 }
