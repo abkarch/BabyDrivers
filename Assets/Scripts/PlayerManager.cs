@@ -23,7 +23,7 @@ public class PlayerManager : MonoBehaviour {
     }
 
     public void startMatch() {
-        numberOfPlayers = PlayerNamesData.playerCount;
+        
         for (int i = 0; i < numberOfPlayers; i++) {
             GameObject g = GameObject.Instantiate(playerPrefabs[i]);
             Baby b = g.GetComponent<Baby>();

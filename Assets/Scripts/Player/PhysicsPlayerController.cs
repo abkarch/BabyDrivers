@@ -27,7 +27,10 @@ public class PhysicsPlayerController : MonoBehaviour
 
     private Animator anim;
     private int groundedBool;
-    public Transform cameraTransform;
+
+	public float camSpeed = 4f;
+    private Transform cameraTransform;
+	private ThirdPersonCamera tpCam;
 
     private float h;
     private float v;
@@ -38,6 +41,12 @@ public class PhysicsPlayerController : MonoBehaviour
     private float distToGround = 0;
 
     private bool isGrounded = false;
+
+	public void Initialize(Transform inCamTran)
+	{
+		cameraTransform = inCamTran;
+		tpCam = cameraTransform.GetComponent<ThirdPersonCamera>();
+	}
 
     void Awake()
     {
@@ -50,10 +59,6 @@ public class PhysicsPlayerController : MonoBehaviour
             myRigidbody = GetComponent<Rigidbody>();
         }
         groundedBool = Animator.StringToHash("OnGround");
-    }
-
-    void Start()
-    {
     }
 
     public void SetPlayerNum(int num)
@@ -78,6 +83,27 @@ public class PhysicsPlayerController : MonoBehaviour
         v = Input.GetAxis("VerticalP" + playerNum);
 
         isMoving = Mathf.Abs(h) > 0.1 || Mathf.Abs(v) > 0.1;
+
+		if (tpCam != null)
+		{
+			float viewX = Input.GetAxis("ViewXP" + playerNum);
+			float viewY = Input.GetAxis("ViewYP" + playerNum);
+
+			if (viewX == 0 && viewY == 0)
+			{
+				// This is intended for debugging.
+				viewX = Input.GetAxis("MouseX");
+				viewY = Input.GetAxis("MouseY");
+			}
+			else
+			{
+				float camPace = camSpeed * Time.deltaTime;
+				viewX *= camPace;
+				viewY *= camPace;
+			}
+
+			tpCam.UpdateFromInput(viewX, viewY);
+		}
     }
 
     void FixedUpdate()
@@ -150,6 +176,7 @@ public class PhysicsPlayerController : MonoBehaviour
             }
             else
             {
+				Debug.LogWarning("cameraTransform was missing when setting up forward vector!");
                 if (GameManager.instance != null)
                 {
                     forward = GameManager.instance.ActiveCamera.transform.TransformDirection(Vector3.up);
