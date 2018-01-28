@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 17c16024b5793a34eb60c5db1919d871
+timeCreated: 1517164397
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Hand Printing Press Stencil_dem
+  fontNames:
+  - Hand Printing Press Stencil_dem
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
