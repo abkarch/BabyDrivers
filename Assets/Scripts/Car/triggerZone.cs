@@ -20,15 +20,18 @@ public class triggerZone : MonoBehaviour {
 
     public void LeaveState()
     {
-        if (exitToPosition != null)
+        if (babyUsing != null)
         {
-            babyUsing.setState("leavingInteraction", this);
+            if (exitToPosition != null)
+            {
+                babyUsing.setState("leavingInteraction", this);
+            }
+            else
+            {
+                babyUsing.setState("free", null);
+            }
+            babyUsing = null;
+            occupied = false;
         }
-        else
-        {
-            babyUsing.setState("free", null);
-        }
-        babyUsing = null;
-        occupied = false;
     }
 }

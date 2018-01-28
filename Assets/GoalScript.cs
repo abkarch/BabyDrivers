@@ -184,11 +184,17 @@ public class GoalScript : MonoBehaviour {
 
     }
 
+    public static GoalScript instance;
+    public Rigidbody goalRigidbody;
+
     private int iterator;
     private Goal[] list = new Goal[4];
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+        instance = this;
+        goalRigidbody = GetComponent<Rigidbody>();
+
         list[0] = new Goal();
         list[0].setCollide();
         list[1] = new Goal();
@@ -249,4 +255,10 @@ public class GoalScript : MonoBehaviour {
         {
         }
     }
+
+    public Rigidbody getComp()
+    {
+        return goalRigidbody;
+    }
+
 }
