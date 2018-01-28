@@ -11,6 +11,7 @@ public class Baby : MonoBehaviour
     public Animator anim;
     public BabyCarController car;
     public bool canShiftChange;
+	public AudioSource Audio;
 
     triggerZone zoneIn = null;
     triggerZone zoneActingIn = null;
@@ -92,6 +93,7 @@ public class Baby : MonoBehaviour
             enablePhysics();
             anim.SetBool("Steering", false);
             anim.SetBool("Pedaling", false);
+            anim.SetBool("Shifting", false);
             state = s;
             zoneActingIn = null;            
         }
@@ -99,6 +101,7 @@ public class Baby : MonoBehaviour
         {
             anim.SetBool("Steering", false);
             anim.SetBool("Pedaling", false);
+            anim.SetBool("Shifting", false);
             state = s;
             StartCoroutine(tweenBabyToFreeState(gameObject, zoneActingIn.exitToPosition, 15));
         }
@@ -155,7 +158,7 @@ public class Baby : MonoBehaviour
 
     private IEnumerator tweenBaby(GameObject g, Transform newPos, float rate)
     {
-        while (!(g.transform.position.AlmostEquals(newPos.transform.position, .01f)) || g.transform.rotation != (newPos.transform.rotation))
+        while (!(g.transform.position.AlmostEquals(newPos.transform.position, .05f)) || g.transform.rotation != (newPos.transform.rotation))
         {
             g.transform.position = Vector3.Lerp(g.transform.position, newPos.transform.position, Time.deltaTime * rate);
             g.transform.rotation = Quaternion.Slerp(g.transform.rotation, newPos.transform.rotation, Time.deltaTime * rate);
@@ -165,10 +168,9 @@ public class Baby : MonoBehaviour
 
     private IEnumerator tweenBabyToFreeState(GameObject g, Transform newPos, float rate)
     {
-        while (!(g.transform.position.AlmostEquals(newPos.transform.position, .01f)) || g.transform.rotation != (newPos.transform.rotation))
+        while (!(g.transform.position.AlmostEquals(newPos.transform.position, .05f)))
         {
             g.transform.position = Vector3.Lerp(g.transform.position, newPos.transform.position, Time.deltaTime * rate);
-            g.transform.rotation = Quaternion.Slerp(g.transform.rotation, newPos.transform.rotation, Time.deltaTime * rate);
             yield return null;
         };
         setState("free", null);
@@ -237,5 +239,14 @@ public class Baby : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         canShiftChange = true;
     }
+
+	public void PlaySoundClip(AudioClip inSound)
+	{
+		if (Audio != null && inSound != null)
+		{
+			Audio.clip = inSound;
+			Audio.Play();
+		}
+	}
 }
 
