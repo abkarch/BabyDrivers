@@ -77,6 +77,8 @@ public class Baby : MonoBehaviour
         else if (s == "free")
         {
             enablePhysics();
+            anim.SetBool("Steering", false);
+            state = s;
         }
         else if (t != null)
         {

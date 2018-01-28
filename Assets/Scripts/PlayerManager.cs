@@ -24,6 +24,9 @@ public class PlayerManager : MonoBehaviour {
 
     public void startMatch() {
         numberOfPlayers = PlayerNamesData.playerCount;
+        if(numberOfPlayers < 1) {
+            numberOfPlayers = 1;
+        }
         for (int i = 0; i < numberOfPlayers; i++) {
             GameObject g = GameObject.Instantiate(playerPrefab);
             Baby b = g.GetComponent<Baby>();
