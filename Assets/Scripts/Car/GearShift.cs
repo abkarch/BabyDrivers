@@ -50,22 +50,26 @@ public class GearShift : MonoBehaviour
         //TODO: move the gear visually to the currentGear
     }
 
-    public void ShiftGearUp()
+    public bool ShiftGearUp()
     { // shifting up goes down in the list
         if (currentGearIndex > 0)
         {
             currentGearIndex--;
             UpdateVisual();
+            return true;
         }
+        return false;
     }
 
-    public void ShiftGearDown()
+    public bool ShiftGearDown()
     {
         //shifting the gear down goes up in the list
         if (currentGearIndex < possibleGears.Length - 1)
         {
             currentGearIndex++;
             UpdateVisual();
+            return true;
         }
+        return false;
     }
 }
