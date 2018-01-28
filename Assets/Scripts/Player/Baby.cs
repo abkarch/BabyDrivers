@@ -13,6 +13,7 @@ public class Baby : MonoBehaviour
     public bool canShiftChange;
 
     triggerZone zoneIn = null;
+    triggerZone zoneActingIn = null;
 
     private void Start()
     {
@@ -42,15 +43,22 @@ public class Baby : MonoBehaviour
             {
                 if (Input.GetButtonDown("EnterPositionP" + playerNum))
                 {
-                    setState(zoneIn.newStateOfBaby, zoneIn);
+                    zoneIn.StartUsing(this);
                 }
             }
+        }
+        else if (state == "leavingInteraction")
+        { // nothing to do - it'll wait until the Ienumerator is done
+
         }
         else
         {
             if (Input.GetButtonDown("LeavePositionP" + playerNum))
             {
-                setState("free", null);
+                if (zoneActingIn != null)
+                {
+                    zoneActingIn.LeaveState();
+                }
             }
             else if (state == "Steering")
             {
@@ -85,7 +93,14 @@ public class Baby : MonoBehaviour
             anim.SetBool("Steering", false);
             anim.SetBool("Pedaling", false);
             state = s;
-            
+            zoneActingIn = null;            
+        }
+        else if (s == "leavingInteraction")
+        {
+            anim.SetBool("Steering", false);
+            anim.SetBool("Pedaling", false);
+            state = s;
+            StartCoroutine(tweenBabyToFreeState(gameObject, zoneActingIn.exitToPosition, 15));
         }
         else if (t != null)
         {
@@ -96,6 +111,7 @@ public class Baby : MonoBehaviour
             
             Debug.Log("Setting bool: " + s);
             anim.SetBool(s, true);
+            zoneActingIn = t;
         }
     }
 
@@ -137,14 +153,25 @@ public class Baby : MonoBehaviour
         gameObject.GetComponent<CapsuleCollider>().enabled = true;
     }
 
-    private IEnumerator tweenBaby(GameObject g, Transform newPos, int i)
+    private IEnumerator tweenBaby(GameObject g, Transform newPos, float rate)
     {
         while (!(g.transform.position.AlmostEquals(newPos.transform.position, .01f)) || g.transform.rotation != (newPos.transform.rotation))
         {
-            g.transform.position = Vector3.Lerp(g.transform.position, newPos.transform.position, Time.deltaTime * i);
-            g.transform.rotation = Quaternion.Slerp(g.transform.rotation, newPos.transform.rotation, Time.deltaTime * i);
+            g.transform.position = Vector3.Lerp(g.transform.position, newPos.transform.position, Time.deltaTime * rate);
+            g.transform.rotation = Quaternion.Slerp(g.transform.rotation, newPos.transform.rotation, Time.deltaTime * rate);
             yield return null;
         };
+    }
+
+    private IEnumerator tweenBabyToFreeState(GameObject g, Transform newPos, float rate)
+    {
+        while (!(g.transform.position.AlmostEquals(newPos.transform.position, .01f)) || g.transform.rotation != (newPos.transform.rotation))
+        {
+            g.transform.position = Vector3.Lerp(g.transform.position, newPos.transform.position, Time.deltaTime * rate);
+            g.transform.rotation = Quaternion.Slerp(g.transform.rotation, newPos.transform.rotation, Time.deltaTime * rate);
+            yield return null;
+        };
+        setState("free", null);
     }
 
     public void RunSteeringState()
@@ -172,8 +199,16 @@ public class Baby : MonoBehaviour
 
     public void RunPedalingState() {
         float gasIn = Input.GetAxis("Interact1P" + playerNum);
+        if (gasIn == 0 && Input.GetButton("RightBumper" + playerNum))
+        {
+            gasIn = 1;
+        }
         Debug.Log(gasIn);
         float brakeIn = Input.GetAxis("Interact2P" + playerNum);
+        if (brakeIn == 0 && Input.GetButton("LeftBumper" + playerNum))
+        {
+            brakeIn = 1;
+        }
         anim.SetFloat("gas", Mathf.Lerp(anim.GetFloat("gas"), gasIn, 5 * Time.deltaTime));
         anim.SetFloat("brake", Mathf.Lerp(anim.GetFloat("brake"), brakeIn, 5 * Time.deltaTime));
         anim.SetFloat("idle", 1.0f);

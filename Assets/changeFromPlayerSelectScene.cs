@@ -28,6 +28,14 @@ public class changeFromPlayerSelectScene : MonoBehaviour {
         PlayerNamesData.playerColor[3] = defaultColor;
     }
 
+    void Update()
+    {
+        if (Input.GetButtonUp("StartGame"))
+        {
+            StartGame();
+        }
+    }
+
     public void ChangeToScene (string scenetochangeTo) {
         string[] names = PlayerNamesData.names;
         
@@ -65,5 +73,10 @@ public class changeFromPlayerSelectScene : MonoBehaviour {
            names[playerNumber-1] = input;
         else
             names[playerNumber -1] = "Player " + playerNumber;
+    }
+
+    public void StartGame()
+    {
+        ChangeToScene("FullTest");
     }
 }

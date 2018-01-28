@@ -87,6 +87,7 @@ public class BabyCarController : MonoBehaviour
                     break;
                 case GearShift.Gear.Park:
                     torque = 0; //no acceleration in park
+                    handBrake = 1; //slow down as if braking
                     break;
                 case GearShift.Gear.Reverse:
                     torque *= -1; //reverse the acceleration
