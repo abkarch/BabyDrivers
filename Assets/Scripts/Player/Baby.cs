@@ -116,7 +116,6 @@ public class Baby : MonoBehaviour
             playerController.lockControl();
         }
         objRigidbody.isKinematic = true;
-        objRigidbody.useGravity = false;
     }
 
     public void enablePhysics()
@@ -126,7 +125,6 @@ public class Baby : MonoBehaviour
             playerController.unlockControl();
         }
         objRigidbody.isKinematic = false;
-        objRigidbody.useGravity = true;
     }
 
     private IEnumerator tweenBaby(GameObject g, Transform newPos, int i)
