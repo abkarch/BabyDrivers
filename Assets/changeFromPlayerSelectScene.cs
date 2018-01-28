@@ -15,6 +15,13 @@ public class changeFromPlayerSelectScene : MonoBehaviour {
     public GameObject BabyBase3;
     public GameObject BabyBase4;
 
+    public Material defaultColor;
+
+    void Start()
+    {
+        PlayerNamesData.playerColor= defaultColor;
+    }
+
     public void ChangeToScene (string scenetochangeTo) {
         string[] names = PlayerNamesData.names;
         
@@ -27,8 +34,7 @@ public class changeFromPlayerSelectScene : MonoBehaviour {
 
         
 
-        if (BabyBase1.activeSelf)
-            PlayerNamesData.playerCount++;
+        
         if (BabyBase2.activeSelf)
             PlayerNamesData.playerCount++;
         if (BabyBase3.activeSelf)
