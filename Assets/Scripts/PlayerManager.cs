@@ -10,6 +10,8 @@ public class PlayerManager : MonoBehaviour {
     public SplitScreen ss;
     public Material defaultColor;
 
+	public Transform[] SpawnPoints;
+
 	public GameObject CameraPrefab;
 
     // Make this game object and all its transform children
@@ -24,7 +26,10 @@ public class PlayerManager : MonoBehaviour {
         startMatch();
     }
 
-    public void startMatch() {
+    public void startMatch()
+	{
+		List<Transform> spawnList = new List<Transform>(SpawnPoints);
+
         numberOfPlayers = PlayerNamesData.playerCount;
         if (PlayerNamesData.playerColor == null)
             FillDefaultColors();
@@ -40,8 +45,20 @@ public class PlayerManager : MonoBehaviour {
                 b.SetPlayerNum(i + 1);
                 ChangeColor(b,i+1);
             }
-            g.transform.position = gameObject.transform.position;
-            g.transform.parent = gameObject.transform;
+
+			if (spawnList.Count > 0)
+			{
+				int spawnIdx = Random.Range(0, spawnList.Count);
+				g.transform.position = spawnList[spawnIdx].position;
+				g.transform.rotation = spawnList[spawnIdx].rotation;
+				spawnList.RemoveAt(spawnIdx);
+			}
+			else
+			{
+				g.transform.position = gameObject.transform.position;
+			}
+			g.transform.parent = gameObject.transform;
+
 			GameObject cam = GameObject.Instantiate(CameraPrefab);
 			ThirdPersonCamera tpc = cam.GetComponent<ThirdPersonCamera>();
             if (tpc != null)
