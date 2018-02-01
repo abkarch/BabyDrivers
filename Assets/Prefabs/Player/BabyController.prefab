@@ -1942,7 +1942,7 @@ MonoBehaviour:
   myRigidbody: {fileID: 54507959694064390}
   gravity: 9.8
   walkSpeed: 1
-  turnSmoothing: 3
+  turnSmoothing: 15
   speedDampTime: 0.1
   autoAimMaxAngleOffset: 10
   jumpVelocity: 5

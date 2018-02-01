@@ -143,6 +143,7 @@ public class Baby : MonoBehaviour
             playerController.lockControl();
         }
         objRigidbody.isKinematic = true;
+        objRigidbody.velocity = Vector3.zero;
         gameObject.GetComponent<CapsuleCollider>().enabled = false;
     }
 
@@ -154,25 +155,36 @@ public class Baby : MonoBehaviour
         }
         objRigidbody.isKinematic = false;
         gameObject.GetComponent<CapsuleCollider>().enabled = true;
+
+        //match to the car's speed
+        objRigidbody.AddForce(BabyCarController.instance.carRigidbody.velocity - objRigidbody.velocity, ForceMode.VelocityChange);
     }
 
     private IEnumerator tweenBaby(GameObject g, Transform newPos, float rate)
     {
-        while (!(g.transform.position.AlmostEquals(newPos.transform.position, .01f)) || g.transform.rotation != (newPos.transform.rotation))
+        transform.parent = newPos;
+        while (!(g.transform.localPosition.AlmostEquals(Vector3.zero, .01f)) || g.transform.rotation.AlmostEquals(newPos.transform.rotation, 1))
         {
-            g.transform.position = Vector3.Lerp(g.transform.position, newPos.transform.position, Time.deltaTime * rate);
+            g.transform.localPosition = Vector3.Lerp(g.transform.localPosition, Vector3.zero, Time.deltaTime * rate);
             g.transform.rotation = Quaternion.Slerp(g.transform.rotation, newPos.transform.rotation, Time.deltaTime * rate);
             yield return null;
         };
+        transform.localPosition = Vector3.zero;
+        transform.localEulerAngles = Vector3.zero;
+        transform.parent = BabyCarController.instance.transform;
     }
 
     private IEnumerator tweenBabyToFreeState(GameObject g, Transform newPos, float rate)
     {
-        while (!(g.transform.position.AlmostEquals(newPos.transform.position, .01f)))
+        //parent to the desired transform and work way to zero local position
+        transform.parent = newPos;
+        while (!(g.transform.localPosition.AlmostEquals(Vector3.zero, .08f)))
         {
-            g.transform.position = Vector3.Lerp(g.transform.position, newPos.transform.position, Time.deltaTime * rate);
+            g.transform.localPosition = Vector3.Lerp(g.transform.localPosition, Vector3.zero, Time.deltaTime * rate);
             yield return null;
         };
+        transform.localPosition = Vector3.zero;
+        transform.parent = BabyCarController.instance.transform;
         setState("free", null);
     }
 
